@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+    <h2>Order of Sequences</h2>
+    <p>In the beginning, each of you simultaneously act as the first mover and make guesses in different sequences.
+        After everyone makes their guesses as the first mover, you will then randomly move to another sequence and
+        follow the first mover of that sequence in making your guesses. When everyone in your group finishes making
+        their second set of guesses, you move on to another randomly chosen sequence and make your guesses while
+        following the first and second movers of that sequence. This process repeats until all of you in the group
+        make your guesses as the 6th mover.</p>
+    <p>We repeat this structure twice per block, once for each phase.</p>
+    <p>A couple of points to note:</p>
+    <ol>
+        <li>The color assigned to the group remains the same for each mover in a sequence. However, the color assigned
+            in one sequence has no impact on the color assigned in another sequence. Knowing the color in one sequence
+            does not help you in making your guesses in another sequence</li>
+        <li>You will never face the same sequence twice and you will never follow the same person twice – i.e. you
+            will make only one set of guesses in a given sequence and at most follow a given person once. Also, you will
+            never follow yourself.</li>
+    </ol>
+    {% next_button %}
+
+{% endblock %}

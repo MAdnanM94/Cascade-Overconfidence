@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject {{ participant.id_in_session }} - General Knowledge Trivia Quiz
+{% endblock %}
+
+{% block content %}
+    <h2>Question 4</h2>
+
+    <div class = "question">
+        {% if subsession.sequence == 1 %}
+            {% formfield player.Q4 label="Easy Quiz 1 Q4" %}
+        {% else %}
+            {% formfield player.Q4 label="Hard Quiz 1 Q4" %}
+        {% endif %}
+    </div>
+
+    Click next to submit and move to the next question.
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <style type = "text/css">
+
+        .question{
+            -webkit-touch-callout: none;
+              -webkit-user-select: none;
+               -khtml-user-select: none;
+                 -moz-user-select: none;
+                  -ms-user-select: none;
+                      user-select: none;
+        }
+
+
+    </style>
+{% endblock %}

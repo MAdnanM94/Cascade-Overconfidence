@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+    <h2>Payment</h2>
+    <p>Your payment will depend on the following:</p>
+    <ol>
+        <li>Your performance on one randomly selected quiz (from blocks 2-4)</li>
+        <li>One randomly selected decision of your score for the quiz selected in 1)</li>
+        <li>One randomly selected decision of the randomly matched participant’s score for the quiz selected in 1)</li>
+        <li>Your two guesses in one randomly selected sequence in blocks 1-5.</li>
+    </ol>
+    <p>For 1) we will pool your quiz score with the scores of people who have previously taken the same quiz.
+        Your earnings for your performance on the quiz will be $10 * r where r is your percentile on the quiz.</p>
+    <p>For 2 and 3 each, we will randomly select one score S (from 0 to 10). Then we will select a random number Y
+        from 0 to 100 (each is equally likely). If Y is less than or equal to your guess for the score’s probability,
+        then you will be paid <strong>$2 if the score is S</strong>. Otherwise, you will be paid based on a lottery
+        in which you can earn $2 with a chance of Y%.</p>
+    <p>Payment for 4 will be similarly determined. Of the 60 total sequences (5 blocks * 2 phases * 6 sequences),
+        we will select one sequence at random (each is equally likely). We will then draw two random numbers (Y1 and Y2),
+        each from 0 to 100. For Decision 1 for the chosen sequence, if Y1 is less than or equal to your reported guess,
+        then you will be paid <strong>$12 if the assigned color is Red.</strong> Otherwise, you will be paid based on a
+        lottery in which you can earn $12 with Y1% chance. Payment for Decision 2 is determined identically;
+        if Y2 is less than or equal to your reported guess, then you will be paid <strong>$12 if the assigned color is
+            Red.</strong> Otherwise, you will be paid based on a lottery in which you can earn $12 with Y2% chance.</p>
+    <p><strong>Note: The payment scheme is designed in a way to ensure that the best way to maximize your earnings is to
+        report your true guess for the probability. For example, for guesses regarding the color red, you maximize your
+        earnings by reporting your true beliefs regarding the probability of Red.</strong></p>
+    {% next_button %}
+
+{% endblock %}

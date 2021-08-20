@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject ID {{ participant.id_in_session }} - Block Start.
+{% endblock %}
+
+{% block content %}
+    <h3>
+        We will now start the first block.
+    </h3>
+    <h3>
+        You have been randomly matched with 5 people to form a group of 6.
+    </h3>
+    <h3>
+        Please click next to continue.
+    </h3>
+    {% next_button %}
+{% endblock %}

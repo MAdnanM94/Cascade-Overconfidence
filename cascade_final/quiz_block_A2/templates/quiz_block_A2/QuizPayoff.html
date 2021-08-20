@@ -1,0 +1,90 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject ID {{ participant.id_in_session }} - Payoffs for Quiz and Score Guess.
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Results</h2>
+        <p>This screen shows your payoff for your performance on the quiz and your guesses for the scores.
+            You will receive this payoff if this quiz is chosen for payment at the end of the experiment.</p>
+
+        <h3>Your Score for this Quiz is {{ player.score }}</h3>
+
+        <h3>Own Score Guess</h3>
+        <p>The question chosen for payment is "What is the probability (0-100%) that your score is {{ player.question_own }}?"</p>
+        <p>Your guess for the probability that your score is {{ player.question_own }} was {{ own }}%</p>
+        <p>The random number drawn from 0-100 is {{ player.random_own }}</p>
+        {% if player.random_own <= own %}
+        <p>You will be paid ${{ Constants.belief_payoff }} if your score is {{ player.question_own }}.</p>
+        {% else %}
+        <p>You will be paid ${{ Constants.belief_payoff }} with a {{ player.random_own }}% chance.</p>
+        {% endif %}
+
+        <h3>Other Person's Score Guess</h3>
+        <p>The phase chosen at random for this part is Phase {{ player.other_round }}.</p>
+        <p>The question chosen for payment is "What is the probability (0-100%) that the other person's score is {{ player.question_other }}?"</p>
+        <p>Your guess for the probability that the other person's score is {{ player.question_other }} was {{ other }}%</p>
+        <p>The random number drawn from 0-100 is {{ player.random_other }}</p>
+        {% if player.random_other <= other %}
+        <p>You will be paid ${{ Constants.belief_payoff }} if the the other person's score is {{ player.question_other }}</span></p>
+        {% else %}
+        <p>You will be paid ${{ Constants.belief_payoff }} with a {{ player.random_other }}% chance.</p>
+        {% endif %}
+
+        <h3>Payoff</h3>
+        <p>Your score is {{ player.score }}</p>
+        <p>The other person's score is {{ player.other_score }}.</p>
+        <p>Your payoff for your own score's guess is ${{ player.profit_own }}.</p>
+        <p>Your payoff for the other person's score guess is ${{ player.profit_other }}.</p>
+        <p>Your final payoff for this quiz is ${{ player.quiz_profit }}.</p>
+        <p><strong>You will get this payoff only if this block is chosen for payment at the end of the experiment.</strong></p>
+
+        {% next_button %}
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style type = "text/css">
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 0.5fr 1fr 1fr;
+            gap: 10px 10px;
+            grid-template-areas:
+                "information information information information"
+                "red blue history history"
+                "decision decision decision decision";
+         }
+
+        .information { grid-area: information; }
+
+        .red { grid-area: red; }
+
+        .blue { grid-area: blue; }
+
+        .history { grid-area: history; }
+
+        .decision { grid-area: decision; }
+
+        .row{ display: none; }
+
+        .mover{ width:250px; }
+
+        .cell{
+            width:150px;
+        }
+
+        .resize {
+            max-width:100%;
+            max-height:100%;
+        }
+
+
+    </style>
+{% endblock %}
+
+

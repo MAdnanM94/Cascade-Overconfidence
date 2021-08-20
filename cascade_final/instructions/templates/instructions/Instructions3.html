@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+    <h2>Guesses</h2>
+    <h3>Guess 1</h3>
+    <p>Before making the first guess (Guess 1), you will be able to see an indication of what other people in your group
+        have guessed for this sequence. This indication can be either <span style="color: red">Red</span> or
+        <span style="color: blue">Blue</span> and will depend on their second guess (Guess 2). You won’t be shown their
+        exact percentage, you will only know if their guesses are above or below 50%. If someone before you guessed
+        greater than or equal to 50%, the indication will be <span style="color:red">Red</span>.
+        If they guessed less than 50%, the indication will be <span style="color: blue">Blue</span>.</p>
+    <h3>Guess 2</h3>
+    <p>When you make the second guess, you will also receive a private signal. This signal will take the form of a ball
+        drawn from a jar that is assigned to you based on your group’s color. If the group’s color is Red, your ball
+        will be drawn from a “Red Jar” and if the group’s color is Blue, the ball will be drawn from a “Blue Jar.”
+        Each jar will be composed of 100 balls. The Red jar will have <i>at least 50 Red balls and at most 50 blue balls.</i>
+        The Blue jar will have <i>at least 50 blue balls and at most 50 red balls.</i> Details about the jars are given below.
+        <strong>Note that your private signals are drawn independently of the signals of other participants</strong>.</p>
+
+    {% next_button %}
+
+{% endblock %}

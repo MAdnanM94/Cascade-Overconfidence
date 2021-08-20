@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject ID {{ participant.id_in_session }} - Guesses about your own score.
+{% endblock %}
+
+{% block content %}
+    <p>In this page, we will ask you about your <i>beliefs</i> about your score on the quiz you just took.</p>
+    <p>For each score X from 0 to 10, we will ask you the following question <strong>"What do you think is the
+    probability (0-100%) that your score is X?"</strong></p>
+    <p>You will use the sliders to indicate your guess about the probabilities. <strong>Note that the probabilities
+    must sum up to 100%.</strong></p>
+
+    {% formfields %}
+    {% next_button %}
+
+{% endblock %}
