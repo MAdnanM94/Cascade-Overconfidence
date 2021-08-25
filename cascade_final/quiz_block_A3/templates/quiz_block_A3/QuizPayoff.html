@@ -36,6 +36,8 @@
 
         <h3>Payoff</h3>
         <p>Your score is {{ player.score }}</p>
+        <p>Your score's percentile ranking among previous quiz takers is {{ percentile }}</p>
+        <p>Your payoff from your performance on the quiz is ${{ player.profit_score }}</p>
         <p>The other person's score is {{ player.other_score }}.</p>
         <p>Your payoff for your own score's guess is ${{ player.profit_own }}.</p>
         <p>Your payoff for the other person's score guess is ${{ player.profit_other }}.</p>

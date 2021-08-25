@@ -9,13 +9,14 @@ from otree.api import (
     currency_range,
 )
 import random
+import pandas as pd
+from scipy import stats
 
 author = 'Mir Adnan Mahmood'
 
 doc = """
 This app is contains code for the Third Quiz Block treatment for the Overconfidence with Cascades experiment. Players are
-assigned a score based on a 10 item quiz - Questions come from - Bank A and are of the Easy and Medium
-difficulty. The score determines their accuracy. There are two phases:
+assigned a score based on a 10 item quiz. The score determines their accuracy. There are two phases:
 Phase 1 - Unknown Phase - Players don't know their own score and thus don't know their own accuracy.
 Phase 2 - Known Phase - Players know their own score and accuracy
 Each Phase has 6 cascade sequences/decisions where players make two guesses about the probability that the color assigned
@@ -454,8 +455,23 @@ class Player(BasePlayer):
         # This function computes the profit for the quiz taken in this block -
         # contains profit from score, own score elicitation and other score elicitation
 
-        # Profit from quiz score - needs to be added
-        # self.profit_score =
+        # Profit from quiz score
+        # Loading the dataset
+        data = pd.read_csv('_static/quizA.csv')
+        if self.subsession.sequence == 2:
+            scores = data['easy2'].copy()
+
+        else:
+            scores = data['hard2'].copy()
+
+        # appending the participant's score to the data
+        score_list = scores.values.tolist()
+        score_list.append(self.score)
+
+        # Computing the percentile rank
+        percentile = round(stats.percentileofscore(score_list, self.score) / 100, 2)
+
+        self.profit_score = Constants.score_payoff * percentile
 
         # Profit from score elicitation
         self.other_round = random.randint(1, 2)

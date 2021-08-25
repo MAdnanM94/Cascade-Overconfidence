@@ -426,7 +426,8 @@ class QuizPayoff(Page):
 
         return dict(
             own=own_guesses[self.player.question_own],
-            other=other_guesses[self.player.question_other]
+            other=other_guesses[self.player.question_other],
+            percentile=self.player.profit_score / Constants.score_payoff * 100
         )
 
 
