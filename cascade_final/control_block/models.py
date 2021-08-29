@@ -43,7 +43,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    sequence = models.IntegerField()
+    sequence = models.IntegerField()    # The sequence variable here indicates sequence of quizzes for quiz blocks
 
     def creating_session(self):
         if self.round_number == 1:
@@ -137,26 +137,28 @@ class Group(BaseGroup):
         for p in self.get_players():
             if self.subsession.round_number == 1:
                 r = random.random()
-                if r <= 0.1:
+                if r <= 1/11:
                     p.score = 0
-                elif r <= 0.2:
+                elif r <= 2/11:
                     p.score = 1
-                elif r <= 0.3:
+                elif r <= 3/11:
                     p.score = 2
-                elif r <= 0.4:
+                elif r <= 4/11:
                     p.score = 3
-                elif r <= 0.5:
+                elif r <= 5/11:
                     p.score = 4
-                elif r <= 0.6:
+                elif r <= 6/11:
                     p.score = 5
-                elif r <= 0.7:
+                elif r <= 7/11:
                     p.score = 6
-                elif r <= 0.8:
+                elif r <= 8/11:
                     p.score = 7
-                elif r <= 0.9:
+                elif r <= 9/11:
                     p.score = 8
-                else:
+                elif r <= 10/11:
                     p.score = 9
+                else:
+                    p.score = 10
             else:
                 p.score = p.in_round(1).score
 
