@@ -3,8 +3,8 @@
 import excel "C:\Users\Adnan Mahmood\Desktop\Cascade Testing Data\quiz_block_EAE_2020-11-24.xlsx", sheet("Sheet1") firstrow
 drop code label _is_bot _index_in_pages _max_page_index _current_app_name _current_page_name time_started visited mturk_worker_id mturk_assignment_id role paying_round paying_decision Q1 Q1_correct Q2 Q2_correct Q3 Q3_correct Q4 Q4_correct Q5 Q5_correct Q6 Q6_correct Q7 Q7_correct Q8 Q8_correct Q9 Q9_correct Q10 Q10_correct guess_profit quiz_profit profit_pre profit_post random_pre random_post other_round profit_score profit_own profit_other question_own question_other random_own random_other DI groupprior_red grouporder code label mturk_HITId mturk_HITGroupId comment is_demo
 rename round_number round
-reshape long chain stateR Red_pre Red_post Red_hist signal, i(round id_in_session) j(order)
-sort round groupid_in_subsession chain order
+reshape long sequence stateR Red_pre Red_post Red_hist signal, i(round id_in_session) j(order)
+sort round groupid_in_subsession sequence order
 br
 gen same_signal = 0
 replace same_signal = 1 if stateR == 1 & signal == "Red"
@@ -15,8 +15,8 @@ tab same_signal
 import excel "C:\Users\Adnan Mahmood\Desktop\Cascade Testing Data\control_block_2020-11-24.xlsx", sheet("Sheet1") firstrow
 drop code label _is_bot _index_in_pages _max_page_index _current_app_name _current_page_name time_started visited mturk_worker_id mturk_assignment_id role paying_round paying_decision score guess_profit profit_pre profit_post random_pre random_post BI groupprior_red grouporder code label mturk_HITId mturk_HITGroupId comment is_demo
 rename round_number round
-reshape long chain stateR Red_pre Red_post Red_hist signal, i(round id_in_session) j(order)
-sort round groupid_in_subsession chain order
+reshape long sequence stateR Red_pre Red_post Red_hist signal, i(round id_in_session) j(order)
+sort round groupid_in_subsession sequence order
 gen same_signal = 0
 replace same_signal = 1 if stateR == 1 & signal == "Red"
 replace same_signal = 1 if stateR == 0 & signal == "Blue"

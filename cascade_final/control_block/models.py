@@ -43,7 +43,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    sequence = models.IntegerField()    # The sequence variable here indicates sequence of quizzes for quiz blocks
+    q_sequence = models.IntegerField()    # The sequence variable here indicates sequence of quizzes for quiz blocks
 
     def creating_session(self):
         if self.round_number == 1:
@@ -51,13 +51,13 @@ class Subsession(BaseSubsession):
         else:
             self.group_like_round(1)
 
-        self.sequence = self.session.config['sequence']
+        self.q_sequence = self.session.config['q_sequence']
 
     def initialization(self):
         # This function initializes the round
-        # First it records the random round/phase and chain/sequence for payment purposes
-        # Then it sets the states for the chains and dumps them into the relevant history variables for the groups
-        # For each group it then sets the order and group chain
+        # First it records the random round/phase and sequence for payment purposes
+        # Then it sets the states for the sequences and dumps them into the relevant history variables for the groups
+        # For each group it then sets the order and group sequence
 
         # Participant code for payoffs
         if self.round_number == 1:
@@ -73,13 +73,13 @@ class Subsession(BaseSubsession):
             p.paying_decision = p.participant.vars['paying_decision_1']
 
         # Code for setting the state
-        # Generating a list of 6 random numbers - one for each chain per group
+        # Generating a list of 6 random numbers - one for each sequence per group
         state_r = [random.random() for i in range(Constants.players_per_group)]
         # Generating boolean values for state being Red (if prior < 0.5, red)
         self.session.vars['true_state_Red_1'] = [r <= Constants.prior_red for r in state_r]
 
         # Initializing the histories for this round - one for each group
-        # each history var is a matrix - rows represent the order, columns represent the chain
+        # each history var is a matrix - rows represent the order, columns represent the sequence
         self.session.vars['Red_hist_1_1'] = [[False for i in range(Constants.players_per_group)] for j in range(Constants.spell_length)]
         self.session.vars['Red_hist_1_2'] = [[False for i in range(Constants.players_per_group)] for j in range(Constants.spell_length)]
 
@@ -89,8 +89,8 @@ class Subsession(BaseSubsession):
             # set the prior
             g.set_IS()
             # set the information structure
-            g.set_chain()
-            # set the chain matrix and the chain variables
+            g.set_sequence()
+            # set the sequence matrix and the sequence variables
             g.order = 1
             # set order = 1
             g.true_state_red_dump = str(self.session.vars['true_state_Red_1'])
@@ -99,36 +99,36 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     prior_red = models.FloatField()
-    # String field containing the true states for each chain
+    # String field containing the true states for each sequence
     true_state_red_dump = models.LongStringField()
     # Order variable signifying the "position" of each decision
     order = models.IntegerField(initial=1)
     # History variables - string field containing history of actions
     red_hist_dump = models.LongStringField()
 
-    def set_chain(self):
+    def set_sequence(self):
         def create_matrix(inList, n, k):
-            # This function creates a chain matrix - it's an nxn matrix
+            # This function creates a sequence matrix - it's an nxn matrix
             firstrow = random.sample(inList, k)
             permutes = random.sample(inList, k)
             return list(firstrow[i:] + firstrow[:i] for i in permutes[:n])
 
         n = Constants.players_per_group
         subjects = list(range(1, n + 1))
-        chains = create_matrix(subjects, Constants.spell_length, n)
-        # chains: each row corresponds to an chain, each column corresponds to a subject
+        sequences = create_matrix(subjects, Constants.spell_length, n)
+        # sequences: each row corresponds to an sequence, each column corresponds to a subject
         # each cell is an integer from 1 to n
 
         j = 0
         for p in self.get_players():
-            p.participant.vars['chains_order_1'] = [row[j] for row in chains]
+            p.participant.vars['sequences_order_1'] = [row[j] for row in sequences]
 
-            [p.chain1, p.chain2, p.chain3, p.chain4, p.chain5, p.chain6,
-             ] = p.participant.vars['chains_order_1']
+            [p.sequence1, p.sequence2, p.sequence3, p.sequence4, p.sequence5, p.sequence6,
+             ] = p.participant.vars['sequences_order_1']
 
             j = j + 1
 
-            # this block records the chain in which each agent acts in the prescribed order - so chain(i) is the chain
+            # this block records the sequence in which each agent acts in the prescribed order - so sequence(i) is the sequence
             # in which agent acts in the ith order/position
 
     def set_IS(self):
@@ -169,12 +169,12 @@ class Group(BaseGroup):
         # set empty current history
 
         for p in self.get_players():
-            pchain = p.participant.vars['chains_order_1'][self.order - 1]
-            # this player's current chain
+            psequence = p.participant.vars['sequences_order_1'][self.order - 1]
+            # this player's current sequence
             # pRed = [p.Red_post1, p.Red_post2, p.Red_post3, p.Red_post4, p.Red_post5, p.Red_post6,
             #          ]
             pRed = [p.Red_hist1, p.Red_hist2, p.Red_hist3, p.Red_hist4, p.Red_hist5, p.Red_hist6]
-            current_hist[pchain - 1] = pRed[self.order - 1]
+            current_hist[psequence - 1] = pRed[self.order - 1]
             # construct a list of history within this order
 
         if self.id_in_subsession == 1:
@@ -182,7 +182,7 @@ class Group(BaseGroup):
         else:
             self.session.vars['Red_hist_1_2'][self.order - 1] = current_hist
         # add the history of this order into the round history
-        # note that each row represents an order and each column represents a chain
+        # note that each row represents an order and each column represents a sequence
 
 
 class Player(BasePlayer):
@@ -191,14 +191,14 @@ class Player(BasePlayer):
     score = models.IntegerField()
     accuracy = models.FloatField()
 
-    # Chain identifiers and decision variables
-    # Chain(i) identifies the chain in which agent makes ith decision
+    # sequence identifiers and decision variables
+    # sequence(i) identifies the sequence in which agent makes ith decision
     # signal(i) identifies the signal received in the ith decision
     # stateR(i) is the state in decision i
     # Red_pre(i) - pre guess of probability of state being Red in ith decision
     # Red_post(i) - post guess of probability of state being Red in ith decision
     # Red_hist(i) - recorded state in ith decision (True/Red if greater than 50%, False/Blue otherwise)
-    chain1 = models.IntegerField()
+    sequence1 = models.IntegerField()
     signal1 = models.StringField(initial='')
     stateR1 = models.BooleanField()
     Red_pre1 = models.IntegerField(min=0, max=100,
@@ -207,7 +207,7 @@ class Player(BasePlayer):
                                     label="What do you think is the probability (0 to 100%) that the color is Red?")
     Red_hist1 = models.BooleanField()
 
-    chain2 = models.IntegerField()
+    sequence2 = models.IntegerField()
     signal2 = models.StringField(initial='')
     stateR2 = models.BooleanField()
     Red_pre2 = models.IntegerField(min=0, max=100,
@@ -216,7 +216,7 @@ class Player(BasePlayer):
                                     label="What do you think is the probability (0 to 100%) that the color is Red?")
     Red_hist2 = models.BooleanField()
 
-    chain3 = models.IntegerField()
+    sequence3 = models.IntegerField()
     signal3 = models.StringField(initial='')
     stateR3 = models.BooleanField()
     Red_pre3 = models.IntegerField(min=0, max=100,
@@ -225,7 +225,7 @@ class Player(BasePlayer):
                                     label="What do you think is the probability (0 to 100%) that the color is Red?")
     Red_hist3 = models.BooleanField()
 
-    chain4 = models.IntegerField()
+    sequence4 = models.IntegerField()
     signal4 = models.StringField(initial='')
     stateR4 = models.BooleanField()
     Red_pre4 = models.IntegerField(min=0, max=100,
@@ -234,7 +234,7 @@ class Player(BasePlayer):
                                     label="What do you think is the probability (0 to 100%) that the color is Red?")
     Red_hist4 = models.BooleanField()
 
-    chain5 = models.IntegerField()
+    sequence5 = models.IntegerField()
     signal5 = models.StringField(initial='')
     stateR5 = models.BooleanField()
     Red_pre5 = models.IntegerField(min=0, max=100,
@@ -243,7 +243,7 @@ class Player(BasePlayer):
                                     label="What do you think is the probability (0 to 100%) that the color is Red?")
     Red_hist5 = models.BooleanField()
 
-    chain6 = models.IntegerField()
+    sequence6 = models.IntegerField()
     signal6 = models.StringField(initial='')
     stateR6 = models.BooleanField()
     Red_pre6 = models.IntegerField(min=0, max=100,
@@ -263,22 +263,22 @@ class Player(BasePlayer):
 
     def record_state(self):
         if self.group.order == 1:
-            self.stateR1 = self.session.vars['true_state_Red_1'][self.chain1 - 1]
+            self.stateR1 = self.session.vars['true_state_Red_1'][self.sequence1 - 1]
         if self.group.order == 2:
-            self.stateR2 = self.session.vars['true_state_Red_1'][self.chain2 - 1]
+            self.stateR2 = self.session.vars['true_state_Red_1'][self.sequence2 - 1]
         if self.group.order == 3:
-            self.stateR3 = self.session.vars['true_state_Red_1'][self.chain3 - 1]
+            self.stateR3 = self.session.vars['true_state_Red_1'][self.sequence3 - 1]
         if self.group.order == 4:
-            self.stateR4 = self.session.vars['true_state_Red_1'][self.chain4 - 1]
+            self.stateR4 = self.session.vars['true_state_Red_1'][self.sequence4 - 1]
         if self.group.order == 5:
-            self.stateR5 = self.session.vars['true_state_Red_1'][self.chain5 - 1]
+            self.stateR5 = self.session.vars['true_state_Red_1'][self.sequence5 - 1]
         if self.group.order == 6:
-            self.stateR6 = self.session.vars['true_state_Red_1'][self.chain6 - 1]
+            self.stateR6 = self.session.vars['true_state_Red_1'][self.sequence6 - 1]
 
     def vars_for_template_history(self):
         # These are the variables used in the HTML template
-        current_chain = [
-            self.chain1, self.chain2, self.chain3, self.chain4, self.chain5, self.chain6,
+        current_sequence = [
+            self.sequence1, self.sequence2, self.sequence3, self.sequence4, self.sequence5, self.sequence6,
         ][self.group.order - 1] - 1
 
         if self.group.id_in_subsession == 1:
@@ -304,18 +304,18 @@ class Player(BasePlayer):
                 self.stateR1, self.stateR2, self.stateR3, self.stateR4, self.stateR5, self.stateR6,
             ][self.group.order - 1],
 
-            # Histories about the current chain
-            Red_his1=current_hist[0][current_chain],
+            # Histories about the current sequence
+            Red_his1=current_hist[0][current_sequence],
 
-            Red_his2=current_hist[1][current_chain],
+            Red_his2=current_hist[1][current_sequence],
 
-            Red_his3=current_hist[2][current_chain],
+            Red_his3=current_hist[2][current_sequence],
 
-            Red_his4=current_hist[3][current_chain],
+            Red_his4=current_hist[3][current_sequence],
 
-            Red_his5=current_hist[4][current_chain],
+            Red_his5=current_hist[4][current_sequence],
 
-            Red_his6=current_hist[5][current_chain],
+            Red_his6=current_hist[5][current_sequence],
 
             # number of balls in a jar
             ball_A = 50 + self.score*5,
@@ -323,7 +323,7 @@ class Player(BasePlayer):
         )
 
     def decision_profit(self):
-        # This function computes the profits for the guesses for this block - takes one round at random and one chain/sequence at random
+        # This function computes the profits for the guesses for this block - takes one round at random and one sequence at random
         # and pays for that.
 
         in_paying_round = self.in_round(self.paying_round)

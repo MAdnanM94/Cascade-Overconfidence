@@ -38,8 +38,8 @@ class PreDecision(Page):
     # the form depends on the order
 
     def before_next_page(self):
-        current_chain = self.player.participant.vars['chains_order_1'][self.group.order - 1]
-        true_state = self.session.vars['true_state_Red_1'][current_chain - 1]
+        current_sequence = self.player.participant.vars['sequences_order_1'][self.group.order - 1]
+        true_state = self.session.vars['true_state_Red_1'][current_sequence - 1]
 
         r = random.random()
         accuracy = self.player.accuracy
@@ -87,35 +87,47 @@ class PostDecision(Page):
 
     def before_next_page(self):
         if self.group.order == 1:
-            if self.player.Red_post1 >= 50:
+            if self.player.Red_post1 > 50:
                 self.player.Red_hist1 = True
-            else:
+            elif self.player.Red_post1 < 50:
                 self.player.Red_hist1 = False
+            else:
+                self.player.Red_hist1 = random.choice([True, False])
         elif self.group.order == 2:
-            if self.player.Red_post2 >= 50:
+            if self.player.Red_post2 > 50:
                 self.player.Red_hist2 = True
-            else:
+            elif self.player.Red_post2 < 50:
                 self.player.Red_hist2 = False
+            else:
+                self.player.Red_hist2 = random.choice([True, False])
         if self.group.order == 3:
-            if self.player.Red_post3 >= 50:
+            if self.player.Red_post3 > 50:
                 self.player.Red_hist3 = True
-            else:
+            elif self.player.Red_post3 < 50:
                 self.player.Red_hist3 = False
+            else:
+                self.player.Red_hist3 = random.choice([True, False])
         if self.group.order == 4:
-            if self.player.Red_post4 >= 50:
+            if self.player.Red_post4 > 50:
                 self.player.Red_hist4 = True
-            else:
+            elif self.player.Red_post4 < 50:
                 self.player.Red_hist4 = False
+            else:
+                self.player.Red_hist4 = random.choice([True, False])
         if self.group.order == 5:
-            if self.player.Red_post5 >= 50:
+            if self.player.Red_post5 > 50:
                 self.player.Red_hist5 = True
-            else:
+            elif self.player.Red_post5 < 50:
                 self.player.Red_hist5 = False
-        if self.group.order == 6:
-            if self.player.Red_post6 >= 50:
-                self.player.Red_hist6 = True
             else:
+                self.player.Red_hist5 = random.choice([True, False])
+        if self.group.order == 6:
+            if self.player.Red_post6 > 50:
+                self.player.Red_hist6 = True
+            elif self.player.Red_post6 < 50:
                 self.player.Red_hist6 = False
+            else:
+                self.player.Red_hist6 = random.choice([True, False])
 
 
 class OrderFinish(WaitPage):

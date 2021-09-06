@@ -48,7 +48,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
     <div class="tab-pane show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
         <p>Welcome and thank you for taking part in this Economics Experiment. This experiment will last for around 2-2.5
             hours. If you read the instructions carefully, you can earn a considerable amount of money depending on your
-            decisions and chance. Your earnings will be paid out to you via Venmo at the end of the experiment.</p>
+            decisions and chance. Your earnings will be paid out to you via Cash at the end of the experiment.</p>
 
         <p><i>Before we begin, we ask that you turn off your cell phones for the duration of this experiment. We also ask
             that you do not communicate with anyone for the duration of this experiment and only use the software provided
@@ -58,7 +58,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <h2>Overview</h2>
         <p>This experiment consists of a series of decision rounds spread out over <strong>5 blocks</strong>. At the
             beginning of each block, you will be <strong>randomly</strong> assigned to a group with 6 participants
-            (including you). Neither you, nor your group members will know each other’s identities.</p>
+            (including you). Neither you, nor your group members will know each other's identities.</p>
 
         <p>At the beginning of each block, you will be assigned a score, from 0 to 10. How the scores are assigned depends
             on the block.</p>
@@ -99,9 +99,9 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
                 done (if you are the first mover, you will see nothing).</li>
             <li>You will then make your first guess (Guess 1) about the probability that the color assigned to the group
                 is red based on the indication of the previous movers.</li>
-            <li>You will then see a private signal that provides some hint as to your group’s assigned color. You will then
+            <li>You will then see a private signal that provides some hint as to your group's assigned color. You will then
                 make your second guess (Guess 2) about the probability that the color assigned to the group is Red based on
-                all the information you’ve been given.</li>
+                all the information you've been given.</li>
         </ol>
         <br>
         <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
@@ -114,14 +114,17 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <h3>Guess 1</h3>
         <p>Before making the first guess (Guess 1), you will be able to see an indication of what other people in your group
             have guessed for this sequence. This indication can be either <span style="color: red">Red</span> or
-            <span style="color: blue">Blue</span> and will depend on their second guess (Guess 2). You won’t be shown their
+            <span style="color: blue">Blue</span> and will depend on their second guess (Guess 2). You won't be shown their
             exact percentage, you will only know if their guesses are above or below 50%. If someone before you guessed
-            greater than or equal to 50%, the indication will be <span style="color:red">Red</span>.
-            If they guessed less than 50%, the indication will be <span style="color: blue">Blue</span>.</p>
+            greater than 50%, the indication will be <span style="color:red">Red</span>.
+            If they guessed less than 50%, the indication will be <span style="color: blue">Blue</span>.
+            If they guessed 50%, then the computer will randomly choose an indication of either <span style="color:red">Red</span>
+            or <span style="color: blue">Blue</span>.
+        </p>
         <h3>Guess 2</h3>
         <p>When you make the second guess, you will also receive a private signal. This signal will take the form of a ball
-            drawn from a jar that is assigned to you based on your group’s color. If the group’s color is Red, your ball
-            will be drawn from a “Red Jar” and if the group’s color is Blue, the ball will be drawn from a “Blue Jar.”
+            drawn from a jar that is assigned to you based on your group's color. If the group's color is Red, your ball
+            will be drawn from a "Red Jar" and if the group's color is Blue, the ball will be drawn from a "Blue Jar."
             Each jar will be composed of 100 balls. The Red jar will have <i>at least 50 Red balls and at most 50 blue balls.</i>
             The Blue jar will have <i>at least 50 blue balls and at most 50 red balls.</i> Details about the jars are given below.
             <strong>Note that your private signals are drawn independently of the signals of other participants</strong>.</p>
@@ -143,7 +146,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
             an additional point replaces 5 blue balls with 5 red balls and vice versa for the blue jar.
             For example, for a score of 7, the red jar contains 85 red balls and 15 blue balls and the blue jar contains
             85 blue balls and 15 red balls.</p>
-        <p><strong>Note – You will not know the color of the jar the ball is drawn from. Furthermore, you will not know the
+        <p><strong>Note - You will not know the color of the jar the ball is drawn from. Furthermore, you will not know the
             composition of the jars of other people, nor the color of their jars. Also, a higher score makes it more likely
             for your ball to be the same color as the group.</strong></p>
         <br>
@@ -237,7 +240,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <p>For 1) we will pool your quiz score with the scores of people who have previously taken the same quiz.
             Your earnings for your performance on the quiz will be $10 * r where r is your percentile on the quiz.</p>
         <p>For 2 and 3 each, we will randomly select one score S (from 0 to 10). Then we will select a random number Y
-            from 0 to 100 (each is equally likely). If Y is less than or equal to your guess for the score’s probability,
+            from 0 to 100 (each is equally likely). If Y is less than or equal to your guess for the score's probability,
             then you will be paid <strong>$2 if the score is S</strong>. Otherwise, you will be paid based on a lottery
             in which you can earn $2 with a chance of Y%.</p>
         <p>Payment for 4 will be similarly determined. Of the 60 total sequences (5 blocks * 2 phases * 6 sequences),
