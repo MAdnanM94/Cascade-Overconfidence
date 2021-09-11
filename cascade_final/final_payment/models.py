@@ -31,9 +31,12 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     def final_payoffs(self):
+        # Choosing the blocks for payment
+        guess_block = random.randint(1, 5)
+        quiz_block = random.randint(2, 5)
         for p in self.get_players():
             # Getting the payment for the guesses
-            p.payment_block = random.randint(1, 5)
+            p.payment_block = guess_block
             if p.payment_block == 1:
                 p.payment_phase = p.participant.vars['paying_round_1']
                 p.payment_decision = p.participant.vars['paying_decision_1']
@@ -56,7 +59,7 @@ class Group(BaseGroup):
                 p.profit_decisions = p.participant.vars['guess_profit_5']
 
             # Getting payment for the quizzes
-            p.payment_quiz_block = random.randint(2, 5)
+            p.payment_quiz_block = quiz_block
             if p.payment_quiz_block == 2:
                 p.profit_quiz = p.participant.vars['quiz_profit_2']
                 p.own_score = p.participant.vars['own_score_2']
@@ -83,7 +86,8 @@ class Group(BaseGroup):
                 p.other_question = p.participant.vars['other_question_5']
 
             # Total payoff for the experiment
-            p.payoff = p.profit_decisions + p.profit_quiz
+            p.payoff = round(p.profit_decisions + p.profit_quiz, 1)
+
 
 class Player(BasePlayer):
     # Payment vars for cascade sequences
