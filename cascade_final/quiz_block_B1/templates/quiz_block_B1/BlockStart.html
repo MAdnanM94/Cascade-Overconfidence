@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject ID {{ participant.id_in_session }} - Block Start.
+{% endblock %}
+
+{% block content %}
+    <h4>
+        We will now start a new block.
+    </h4>
+    <h4>
+        You have been randomly re-matched with 5 people to form a group of 6.
+    </h4>
+    <h4>
+        You will now take part in a 10 question quiz. You will have 20 seconds per question. Most questions require either
+        one or two words to answer. For names, please enter the first and last name, unless otherwise stated. Answers
+        with spelling mistakes will be counted as incorrect.
+    </h4>
+    <h4>
+        Please click next to continue to the Quiz for this block.
+    </h4>
+    {% next_button %}
+{% endblock %}

@@ -31,36 +31,36 @@ SESSION_CONFIGS = [
                       'payment_info'],
         use_browser_bots=False
     ),
-    # dict(
-    #     name='cascade_B1',
-    #     display_name='Cascade Test - Quiz Bank B - 1',
-    #     num_demo_participants=12,
-    #     app_sequence=['consent',
-    #                   'instructions',
-    #                   'control_block',
-    #                   'quiz_block_BE1',
-    #                   'quiz_block_BH2',
-    #                   'quiz_block_BH3',
-    #                   'quiz_block_BE4',
-    #                   'final_payment',
-    #                   'payment_info'],
-    #     use_browser_bots=True
-    # ),
-    # dict(
-    #     name='cascade_B2',
-    #     display_name='Cascade Test - Quiz Bank B - 2',
-    #     num_demo_participants=12,
-    #     app_sequence=['consent',
-    #                   'instructions',
-    #                   'control_block',
-    #                   'quiz_block_BH1',
-    #                   'quiz_block_BE2',
-    #                   'quiz_block_BE3',
-    #                   'quiz_block_BH4',
-    #                   'final_payment',
-    #                   'payment_info'],
-    #     use_browser_bots=True
-    # ),
+    dict(
+        name='cascade_B1',
+        display_name='Cascade Test - Quiz Bank B - 1',
+        num_demo_participants=6,
+        q_sequence=1,
+        app_sequence=['instructions',
+                      'control_block',
+                      'quiz_block_B1',
+                      'quiz_block_B2',
+                      'quiz_block_B3',
+                      'quiz_block_B4',
+                      'final_payment',
+                      'payment_info'],
+        use_browser_bots=False
+    ),
+    dict(
+        name='cascade_B2',
+        display_name='Cascade Test - Quiz Bank B - 2',
+        num_demo_participants=6,
+        q_sequence=2,
+        app_sequence=['instructions',
+                      'control_block',
+                      'quiz_block_B1',
+                      'quiz_block_B2',
+                      'quiz_block_B3',
+                      'quiz_block_B4',
+                      'final_payment',
+                      'payment_info'],
+        use_browser_bots=False
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
