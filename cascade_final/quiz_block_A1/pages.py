@@ -21,11 +21,11 @@ class Q1(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy1" in self.player.Q1.lower():
+            if "canada" in self.player.Q1.lower():
                 self.player.score += 1
                 self.player.Q1_correct = True
         else:
-            if "hard1" in self.player.Q1.lower():
+            if "hitler" in self.player.Q1.lower():
                 self.player.score += 1
                 self.player.Q1_correct = True
 
@@ -41,11 +41,11 @@ class Q2(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy2" in self.player.Q2.lower():
+            if "japan" in self.player.Q2.lower():
                 self.player.score += 1
                 self.player.Q2_correct = True
         else:
-            if "hard2" in self.player.Q2.lower():
+            if "boston" in self.player.Q2.lower():
                 self.player.score += 1
                 self.player.Q2_correct = True
 
@@ -61,11 +61,11 @@ class Q3(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy3" in self.player.Q3.lower():
+            if "h2o" in self.player.Q3.lower():
                 self.player.score += 1
                 self.player.Q3_correct = True
         else:
-            if "hard3" in self.player.Q3.lower():
+            if "meryl" in self.player.Q3.lower() and "streep" in self.player.Q3.lower():
                 self.player.score += 1
                 self.player.Q3_correct = True
 
@@ -81,11 +81,11 @@ class Q4(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy4" in self.player.Q4.lower():
+            if "california" in self.player.Q4.lower():
                 self.player.score += 1
                 self.player.Q4_correct = True
         else:
-            if "hard4" in self.player.Q4.lower():
+            if "quentin" in self.player.Q4.lower() and "tarantino" in self.player.Q4.lower():
                 self.player.score += 1
                 self.player.Q4_correct = True
 
@@ -101,11 +101,11 @@ class Q5(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy5" in self.player.Q5.lower():
+            if "cheetah" in self.player.Q5.lower():
                 self.player.score += 1
                 self.player.Q5_correct = True
         else:
-            if "hard5" in self.player.Q5.lower():
+            if "pathology" in self.player.Q5.lower():
                 self.player.score += 1
                 self.player.Q5_correct = True
 
@@ -121,11 +121,11 @@ class Q6(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy6" in self.player.Q6.lower():
+            if "ohio" in self.player.Q6.lower():
                 self.player.score += 1
                 self.player.Q6_correct = True
         else:
-            if "hard6" in self.player.Q6.lower():
+            if "annie" in self.player.Q6.lower() and "potts" in self.player.Q6.lower():
                 self.player.score += 1
                 self.player.Q6_correct = True
 
@@ -141,11 +141,11 @@ class Q7(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy7" in self.player.Q7.lower():
+            if "bacteria" in self.player.Q7.lower():
                 self.player.score += 1
                 self.player.Q7_correct = True
         else:
-            if "hard7" in self.player.Q7.lower():
+            if "1950s" in self.player.Q7.lower() or "1950-1960" in self.player.Q7.lower():
                 self.player.score += 1
                 self.player.Q7_correct = True
 
@@ -161,11 +161,11 @@ class Q8(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy8" in self.player.Q8.lower():
+            if "pacific" in self.player.Q8.lower():
                 self.player.score += 1
                 self.player.Q8_correct = True
         else:
-            if "hard8" in self.player.Q8.lower():
+            if "aconcagua" in self.player.Q8.lower():
                 self.player.score += 1
                 self.player.Q8_correct = True
 
@@ -181,11 +181,11 @@ class Q9(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy9" in self.player.Q9.lower():
+            if "boron" in self.player.Q9.lower():
                 self.player.score += 1
                 self.player.Q9_correct = True
         else:
-            if "hard9" in self.player.Q9.lower():
+            if "tetrahydrocannabinol" in self.player.Q9.lower():
                 self.player.score += 1
                 self.player.Q9_correct = True
 
@@ -201,11 +201,11 @@ class Q10(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if "easy10" in self.player.Q10.lower():
+            if "1965" in self.player.Q10.lower():
                 self.player.score += 1
                 self.player.Q10_correct = True
         else:
-            if "hard10" in self.player.Q10.lower():
+            if "eagles" in self.player.Q10.lower():
                 self.player.score += 1
                 self.player.Q10_correct = True
 
