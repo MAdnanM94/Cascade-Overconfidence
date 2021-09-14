@@ -14,9 +14,10 @@ class ScoreReveal(Page):
         return self.round_number == 2
 
     def vars_for_template(self):
+        accuracy = self.player.accuracy
         return dict(
-            ball_A=50 + 5*self.player.score,
-            ball_B=50 - 5*self.player.score
+            ball_A=int(accuracy*100),
+            ball_B=int(100 - accuracy*100),
         )
 
 

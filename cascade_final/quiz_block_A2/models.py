@@ -140,7 +140,12 @@ class Group(BaseGroup):
             if self.subsession.round_number == 2:
                 p.score = p.in_round(1).score
 
-            p.accuracy = 0.5 + (5 * p.score) / 100
+            if p.score <= 3:
+                p.accuracy = 0.5
+            elif p.score <= 7:
+                p.accuracy = 0.65
+            else:
+                p.accuracy = 0.9
 
     def record_history(self):
         current_hist = ['' for i in range(Constants.players_per_group)]
@@ -413,8 +418,8 @@ class Player(BasePlayer):
             Red_his6=current_hist[5][current_sequence],
 
             # number of balls in a jar
-            ball_A=50 + self.score * 5,
-            ball_B=50 - self.score * 5,
+            ball_A=int(self.accuracy*100),
+            ball_B=int(100 - self.accuracy*100),
         )
 
     def decision_profit(self):
