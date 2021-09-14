@@ -69,7 +69,7 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=3.00, doc=""
+    real_world_currency_per_point=1.00, participation_fee=2.00, doc=""
 )
 
 # ISO-639 code
@@ -94,9 +94,15 @@ INSTALLED_APPS = ['otree']
 # Rooms
 ROOMS = [
     dict(
-        name='econ_lab',
-        display_name='OSU Experimental Economics Lab',
+        name='online_lab',
+        display_name='OSU Online Experimental Economics Lab',
         #participant_label_file='_rooms/cascade_lab.txt',
         #use_secure_urls=True
+    ),
+    dict(
+        name='econ_lab',
+        display_name='OSU Experimental Economics Lab',
+        participant_label_file='_rooms/econ_lab.txt',
+        use_secure_urls=True
     ),
 ]
