@@ -288,45 +288,45 @@ class Player(BasePlayer):
     signal1 = models.StringField(initial='')
     stateR1 = models.BooleanField()
     Red_pre1 = models.IntegerField(min=0, max=100,
-                                   label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                   label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_post1 = models.IntegerField(min=0, max=100,
-                                    label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                    label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_hist1 = models.BooleanField()
 
     sequence2 = models.IntegerField()
     signal2 = models.StringField(initial='')
     stateR2 = models.BooleanField()
     Red_pre2 = models.IntegerField(min=0, max=100,
-                                   label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                   label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_post2 = models.IntegerField(min=0, max=100,
-                                    label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                    label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_hist2 = models.BooleanField()
 
     sequence3 = models.IntegerField()
     signal3 = models.StringField(initial='')
     stateR3 = models.BooleanField()
     Red_pre3 = models.IntegerField(min=0, max=100,
-                                   label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                   label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_post3 = models.IntegerField(min=0, max=100,
-                                    label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                    label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_hist3 = models.BooleanField()
 
     sequence4 = models.IntegerField()
     signal4 = models.StringField(initial='')
     stateR4 = models.BooleanField()
     Red_pre4 = models.IntegerField(min=0, max=100,
-                                   label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                   label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_post4 = models.IntegerField(min=0, max=100,
-                                    label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                    label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_hist4 = models.BooleanField()
 
     sequence5 = models.IntegerField()
     signal5 = models.StringField(initial='')
     stateR5 = models.BooleanField()
     Red_pre5 = models.IntegerField(min=0, max=100,
-                                   label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                   label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_post5 = models.IntegerField(min=0, max=100,
-                                    label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                    label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_hist5 = models.BooleanField()
 
     sequence6 = models.IntegerField()
