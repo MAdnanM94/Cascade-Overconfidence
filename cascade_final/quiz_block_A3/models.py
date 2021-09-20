@@ -175,7 +175,7 @@ class Player(BasePlayer):
     other_score = models.IntegerField()
     accuracy = models.FloatField()
 
-    # Variables for quiz questions - Q1 to Q10 (one for each quiz) - This is from Bank A - History Easy
+    # Variables for quiz questions - Q1 to Q10 (one for each quiz)
     Q1 = models.StringField()
     Q1_correct = models.BooleanField(initial=False)
 
@@ -191,7 +191,6 @@ class Player(BasePlayer):
     Q5 = models.StringField()
     Q5_correct = models.BooleanField(initial=False)
 
-    # History Questions - Medium
     Q6 = models.StringField()
     Q6_correct = models.BooleanField(initial=False)
 
@@ -333,9 +332,9 @@ class Player(BasePlayer):
     signal6 = models.StringField(initial='')
     stateR6 = models.BooleanField()
     Red_pre6 = models.IntegerField(min=0, max=100,
-                                   label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                   label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_post6 = models.IntegerField(min=0, max=100,
-                                    label="What do you think is the probability (0 to 100%) that the color is Red?")
+                                    label="What do you think is the probability (0 to 100%) that the color is Red for this sequence?")
     Red_hist6 = models.BooleanField()
 
     # Final profit-chosen at random for guesses made for this block

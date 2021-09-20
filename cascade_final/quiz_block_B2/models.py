@@ -175,7 +175,7 @@ class Player(BasePlayer):
     other_score = models.IntegerField()
     accuracy = models.FloatField()
 
-    # Variables for quiz questions - Q1 to Q10 (one for each quiz) - This is from Bank A - Science Easy
+    # Variables for quiz questions - Q1 to Q10 (one for each quiz)
     Q1 = models.StringField()
     Q1_correct = models.BooleanField(initial=False)
 
@@ -191,7 +191,6 @@ class Player(BasePlayer):
     Q5 = models.StringField()
     Q5_correct = models.BooleanField(initial=False)
 
-    # Science Questions - Medium
     Q6 = models.StringField()
     Q6_correct = models.BooleanField(initial=False)
 

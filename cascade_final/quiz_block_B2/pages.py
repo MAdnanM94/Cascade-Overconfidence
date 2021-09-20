@@ -65,7 +65,7 @@ class Q3(Page):
                 self.player.score += 1
                 self.player.Q3_correct = True
         else:
-            if "himalayas" in self.player.Q3.lower():
+            if "himalaya" in self.player.Q3.lower():
                 self.player.score += 1
                 self.player.Q3_correct = True
 
