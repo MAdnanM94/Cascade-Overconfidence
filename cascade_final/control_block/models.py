@@ -323,8 +323,8 @@ class Player(BasePlayer):
             Red_his6=current_hist[5][current_sequence],
 
             # number of balls in a jar
-            ball_A=int(self.accuracy*100),
-            ball_B=int(100 - self.accuracy*100),
+            ball_A=round(self.accuracy*100),
+            ball_B=round(100 - self.accuracy*100),
         )
 
     def decision_profit(self):
