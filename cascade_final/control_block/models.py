@@ -163,7 +163,7 @@ class Group(BaseGroup):
                 p.score = p.in_round(1).score
 
             if p.score <= 3:
-                p.accuracy = 0.5
+                p.accuracy = 0.55
             elif p.score <= 7:
                 p.accuracy = 0.65
             else:

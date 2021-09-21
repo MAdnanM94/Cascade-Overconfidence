@@ -63,12 +63,12 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <p>At the beginning of each block, you will be assigned a score, from 0 to 10. How the scores are assigned depends
             on the block.</p>
 
-        <p><strong>In Block 1 - </strong>You will be randomly assigned a score from a given distribution.</p>
+        <p><strong>In Block 1 - </strong>You will be shown a distribution of scores. We will randomly pick a score from
+            this distribution and assign it to you.</p>
 
         <p><strong>In Blocks 2-5 - </strong>You will first take part in a general knowledge trivia quiz. Each quiz contains
-            10 questions. The topics are Geography, Science, History and Entertainment (one quiz per topic). Note that you will
-            have 20 seconds per question. Each question requires one to two words to answer (except when otherwise stated).
-            <strong>Everyone in your group will take the same quiz per block.</strong></p>
+            10 questions. You will have 20 seconds per question. Each question requires one to two words to answer
+            (except when otherwise stated).<strong>Everyone in your group will take the same quiz per block.</strong></p>
 
         <p><strong>Each block will have 2 phases. Each phase will have 6 sequences.</strong> The procedures for each phase
             are nearly identical, except for the following: In Phase 1, you will not know the score assigned to you.
@@ -90,7 +90,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <p>Your action in each sequence is to guess the probability that the color assigned to your group is
             <span style="color: red">Red</span>. You will make 2 guesses per sequence by answering:</p>
 
-        <p><strong>What do you think is the probability (0-100) % that the color is Red?</strong></p>
+        <p><strong>What do you think is the probability (0-100) % that the color is Red for this sequence?</strong></p>
         <p>For each sequence, every group member will make their guesses in a randomly determined sequential order.
             The timeline for each set of guesses is as follows:</p>
 
@@ -98,10 +98,10 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
             <li>When it is your turn, you will first see an indication of what the previous movers in your group have
                 done (if you are the first mover, you will see nothing).</li>
             <li>You will then make your first guess (Guess 1) about the probability that the color assigned to the group
-                is red based on the indication of the previous movers.</li>
+                is <span style="color: red">Red</span> based on the indication of the previous movers.</li>
             <li>You will then see a private signal that provides some hint as to your group's assigned color. You will then
-                make your second guess (Guess 2) about the probability that the color assigned to the group is Red based on
-                all the information you've been given.</li>
+                make your second guess (Guess 2) about the probability that the color assigned to the group is
+                <span style="color: red">Red</span> based on all the information you've been given.</li>
         </ol>
         <br>
         <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
@@ -119,12 +119,12 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
             greater than 50%, the indication will be <span style="color:red">Red</span>.
             If they guessed less than 50%, the indication will be <span style="color: blue">Blue</span>.
             If they guessed 50%, then the computer will randomly choose an indication of either <span style="color:red">Red</span>
-            or <span style="color: blue">Blue</span>.
+            or <span style="color: blue">Blue</span>, each equally likely.
         </p>
         <h3>Guess 2</h3>
         <p>When you make the second guess, you will also receive a private signal. This signal will take the form of a ball
-            drawn from a jar that is assigned to you based on your group's color. If the group's color is Red, your ball
-            will be drawn from a "Red Jar" and if the group's color is Blue, the ball will be drawn from a "Blue Jar."
+            drawn from a jar that is assigned to you based on your group's color. If the group's color is <span style="color: red">Red</span>, your ball
+            will be drawn from a "<span style="color: red">Red</span> Jar" and if the group's color is <span style="color: blue">Blue</span>, the ball will be drawn from a "<span style="color: blue">Blue</span> Jar."
             Each jar will be composed of 100 balls. The Red jar will have <i>at least 50 Red balls and at most 50 blue balls.</i>
             The Blue jar will have <i>at least 50 blue balls and at most 50 red balls.</i> Details about the jars are given below.
             <strong>Note that your private signals are drawn independently of the signals of other participants</strong>.</p>
@@ -136,16 +136,18 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
     <!-- Jars Tab -->
     <div class="tab-pane" id="jars" role="tabpanel" aria-labelledby="jars-tab">
         <h2>Jars</h2>
-        <p>Your private signal is drawn from your individually assigned jar. The composition of each jar is dependent on a
+        <p>Your private signal is drawn from your individually assigned jar. The composition of each jar is dependent on the
             score (from 0 to 10) that is assigned to you at the beginning of each block. </p>
         <p>A higher score will lead to a higher number of balls of the wrong color being replaced with balls of the right
             color. In other words, higher scores will lead to a higher number of Red balls (and a lower number of Blue balls)
             in the Red jar. Likewise, higher scores will lead to a higher number of Blue balls
             (and a lower number of Red balls) in the Blue jar.</p>
-        <p>Each point replaces 5 balls of the wrong color with the right color i.e. in the red jar,
-            an additional point replaces 5 blue balls with 5 red balls and vice versa for the blue jar.
-            For example, for a score of 7, the red jar contains 85 red balls and 15 blue balls and the blue jar contains
-            85 blue balls and 15 red balls.</p>
+        <p>A score of 0-3 gives a composition of 55 Red and 45 Blue balls in the <span style="color:red">Red</span> jar
+            and 45 Red and 55 Blue balls in the <span style="color: blue">Blue</span> Jar. A score of 4-7 gives a composition
+            of 65 Red balls and 35 Blue balls in the<span style="color:red">Red</span> jar and 65 Blue balls and 35 Red balls
+            in the <span style="color: blue">Blue</span> jar. A score higher than 7 results in 90 Red balls and 10 Blue balls
+            in the <span style="color:red">Red</span> jar and 90 Blue balls and 10 Red balls in the
+            <span style="color: blue">Blue</span> jar.</p>
         <p><strong>Note - You will not know the color of the jar the ball is drawn from. Furthermore, you will not know the
             composition of the jars of other people, nor the color of their jars. Also, a higher score makes it more likely
             for your ball to be the same color as the group.</strong></p>
@@ -185,7 +187,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <p>In addition to the above, you will make some additional guesses in Blocks 2-5. In Phase 1, after taking the quiz,
             for each score S (from 0 to 10), you will guess the probability that the score is S by answering the following question:</p>
         <p><strong>What do you think is the probability (0-100) % that the score is S?</strong></p>
-        <p>You will make 2 sets of these 10 guesses. One set is for your own score on the quiz. The other set is for the
+        <p>You will make 2 sets of these 11 guesses. One set is for your own score on the quiz. The other set is for the
             score of one randomly selected participant in your group who has taken the same quiz. In Phase 2, you will be
             shown your own score and will once again make the same guesses for the randomly selected participant. </p>
         <p>Note that for each set, all probabilities must sum up to 100!</p>
@@ -237,19 +239,24 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
             <li>One randomly chosen decision of the randomly selected participant’s score for the quiz selected in 1)</li>
             <li>Your two guesses in one randomly chosen sequence in blocks 1-5.</li>
         </ol>
+        <p>After each block, you will be shown the possible payment you can receive provided the block or quiz is
+            chosen for payment.</p>
         <p>For 1) we will pool your quiz score with the scores of people who have previously taken the same quiz.
             Your earnings for your performance on the quiz will be $10 * r where r is your percentile on the quiz.</p>
-        <p>For 2 and 3 each, we will randomly select one score S (from 0 to 10). Then we will select a random number Y
+        <p>For 2) and 3) each, the computer will randomly select one score S (from 0 to 10). It will then draw a random number Y
             from 0 to 100 (each is equally likely). If Y is less than or equal to your guess for the score's probability,
             then you will be paid <strong>$2 if the score is S</strong>. Otherwise, you will be paid based on a lottery
             in which you can earn $2 with a chance of Y%.</p>
-        <p>Payment for 4 will be similarly determined. Of the 60 total sequences (5 blocks * 2 phases * 6 sequences),
-            we will select one sequence at random (each is equally likely). We will then draw two random numbers (Y1 and Y2),
-            each from 0 to 100. For Decision 1 for the chosen sequence, if Y1 is less than or equal to your reported guess,
+        <p>For 4), the computer will first randomly choose a sequence within the block. Each of the 12 sequences
+            (6 sequences * 2 phases) is equally likely to be chosen. The computer will then draw two random numbers (Y1 and Y2),
+            each from 0 to 100. For Guess 1 for the chosen sequence, if Y1 is less than or equal to your reported guess,
             then you will be paid <strong>$12 if the assigned color is Red.</strong> Otherwise, you will be paid based on a
-            lottery in which you can earn $12 with Y1% chance. Payment for Decision 2 is determined identically;
+            lottery in which you can earn $12 with Y1% chance. Payment for Guess 2 is determined identically;
             if Y2 is less than or equal to your reported guess, then you will be paid <strong>$12 if the assigned color is
                 Red.</strong> Otherwise, you will be paid based on a lottery in which you can earn $12 with Y2% chance.</p>
+        <p>At the end of the experiment, the computer will randomly draw a block from 1-5 and a quiz from blocks 2 to
+            4. You will be paid for the chosen block and quiz as stated above. In addition to this, you will also
+            be paid a $2 show-up fee.</p>
         <p><strong>Note: The payment scheme is designed in a way to ensure that the best way to maximize your earnings is to
             report your true guess for the probability. For example, for guesses regarding the color red, you maximize your
             earnings by reporting your true beliefs regarding the probability of Red.</strong></p>
