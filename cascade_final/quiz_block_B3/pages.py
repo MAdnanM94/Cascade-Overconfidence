@@ -105,7 +105,7 @@ class Q5(Page):
                 self.player.score += 1
                 self.player.Q5_correct = True
         else:
-            if self.player.Q5.lower() == "6" or self.player.Q5.lower() == "six":
+            if "6" in self.player.Q5.lower() or "six" in self.player.Q5.lower():
                 self.player.score += 1
                 self.player.Q5_correct = True
 

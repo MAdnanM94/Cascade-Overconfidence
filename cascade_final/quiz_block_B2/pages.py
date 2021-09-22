@@ -81,7 +81,7 @@ class Q4(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "2000" == self.player.Q4.lower():
+            if "2000" in self.player.Q4.lower():
                 self.player.score += 1
                 self.player.Q4_correct = True
         else:
@@ -145,7 +145,7 @@ class Q7(Page):
                 self.player.score += 1
                 self.player.Q7_correct = True
         else:
-            if self.player.Q7.lower() == "6" or self.player.Q7.lower() == "six":
+            if "6" in self.player.Q7.lower() or "6" in self.player.Q7.lower():
                 self.player.score += 1
                 self.player.Q7_correct = True
 

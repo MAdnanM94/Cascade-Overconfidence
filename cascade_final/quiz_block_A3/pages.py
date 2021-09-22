@@ -61,7 +61,7 @@ class Q3(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if self.player.Q3 == "5" or "five" in self.player.Q3.lower():
+            if "5" in self.player.Q3 or "five" in self.player.Q3.lower():
                 self.player.score += 1
                 self.player.Q3_correct = True
         else:
@@ -105,7 +105,7 @@ class Q5(Page):
                 self.player.score += 1
                 self.player.Q5_correct = True
         else:
-            if self.player.Q5.lower() == "2019":
+            if "2019" in self.player.Q5.lower():
                 self.player.score += 1
                 self.player.Q5_correct = True
 
@@ -141,11 +141,11 @@ class Q7(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if self.player.Q7.lower() == "antarctica":
+            if "antarctica" in self.player.Q7.lower():
                 self.player.score += 1
                 self.player.Q7_correct = True
         else:
-            if self.player.Q7.lower() == "canberra":
+            if "canberra" in self.player.Q7.lower():
                 self.player.score += 1
                 self.player.Q7_correct = True
 
@@ -201,7 +201,7 @@ class Q10(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "louis" in self.player.Q10.lower() or "cartier" in self.player.Q10.lower():
+            if "louis" in self.player.Q10.lower() and "cartier" in self.player.Q10.lower():
                 self.player.score += 1
                 self.player.Q10_correct = True
         else:
