@@ -68,7 +68,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
 
         <p><strong>In Blocks 2-5 - </strong>You will first take part in a general knowledge trivia quiz. Each quiz contains
             10 questions. You will have 20 seconds per question. Each question requires one to two words to answer
-            (except when otherwise stated).<strong>Everyone in your group will take the same quiz per block.</strong></p>
+            (except when otherwise stated).<strong> Everyone in your group will take the same quiz per block.</strong></p>
 
         <p><strong>Each block will have 2 phases. Each phase will have 6 sequences.</strong> The procedures for each phase
             are nearly identical, except for the following: In Phase 1, you will not know the score assigned to you.
@@ -150,7 +150,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
             <span style="color: blue">Blue</span> jar.</p>
         <p><strong>Note - You will not know the color of the jar the ball is drawn from. Furthermore, you will not know the
             composition of the jars of other people, nor the color of their jars. Also, a higher score makes it more likely
-            for your ball to be the same color as the group.</strong></p>
+            for your ball to be the same color as that of the group.</strong></p>
         <br>
         <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
         <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
@@ -168,7 +168,7 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <p>We repeat this structure twice per block, once for each phase.</p>
         <p>A few points to note:</p>
         <ol>
-            <li>The color assigned to the group remains the same for each mover in a sequence. However, the color assigned
+            <li>The color assigned to the group remains the same for each mover in a given sequence. However, the color assigned
                 in one sequence has no impact on the color assigned in another sequence. Knowing the color in one sequence
                 does not help you in making your guesses in another sequence</li>
             <li>You will never face the same sequence twice i.e. you
@@ -211,14 +211,14 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
                         </ol></li>
                     <li>Phase 1 starts:
                         <ol style="list-style-type: lower-alpha">
-                            <li>For blocks 2-5, we will first ask you to make guesses about your own score</li>
-                            <li>For blocks 2-5, then we ask you to make guesses about the score of one randomly selected participant in your group.</li>
+                            <li>For Blocks 2-5, we will first ask you to make guesses about your own score</li>
+                            <li>For Blocks 2-5, then we ask you to make guesses about the score of one randomly selected participant in your group.</li>
                             <li>After that, you will make 6 sets of two guesses, one for each sequence.</li>
                         </ol></li>
                     <li>Phase 2 starts
                         <ol style="list-style-type: lower-alpha">
                             <li>Your own score, and thus your jar compositions for the block is revealed</li>
-                            <li>For blocks 2-5, you will again make guesses about the score of one randomly selected participant in your group.</li>
+                            <li>For Blocks 2-5, you will again make guesses about the score of one randomly selected participant in your group.</li>
                             <li>You will again make 6 sets of two guesses, one for each sequence.</li>
                         </ol></li>
                     <li>Block ends and you move on to the next block.</li>
@@ -234,32 +234,32 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <h2>Payment</h2>
         <p>Your payment will depend on the following:</p>
         <ol>
-            <li>Your performance on one randomly chosen quiz (from blocks 2-4)</li>
-            <li>One randomly chosen decision of your score for the quiz selected in 1)</li>
-            <li>One randomly chosen decision of the randomly selected participant’s score for the quiz selected in 1)</li>
-            <li>Your two guesses in one randomly chosen sequence in blocks 1-5.</li>
+            <li>Your performance on one randomly chosen quiz (from Blocks 2-5) (up to $10)</li>
+            <li>One randomly chosen decision of your score for the quiz selected in 1 (up to $2))</li>
+            <li>One randomly chosen decision of the randomly selected participant's score for the quiz selected in 1) (up to $2)</li>
+            <li>Your two guesses in one randomly chosen sequence in Blocks 1-5. (up to $24)</li>
         </ol>
-        <p>After each block, you will be shown the possible payment you can receive provided the block or quiz is
+        <p>After each block, you will be shown the <em>possible</em> payment you can receive provided the block or quiz is
             chosen for payment.</p>
         <p>For 1) we will pool your quiz score with the scores of people who have previously taken the same quiz.
             Your earnings for your performance on the quiz will be $10 * r where r is your percentile on the quiz.</p>
-        <p>For 2) and 3) each, the computer will randomly select one score S (from 0 to 10). It will then draw a random number Y
+        <p>For 2) and 3), the computer will randomly select one score S (from 0 to 10). It will then draw a random number Y
             from 0 to 100 (each is equally likely). If Y is less than or equal to your guess for the score's probability,
-            then you will be paid <strong>$2 if the score is S</strong>. Otherwise, you will be paid based on a lottery
+            then you will be paid <strong>$2 if the score is S</strong>. If Y is greater than your guess, you will be paid based on a lottery
             in which you can earn $2 with a chance of Y%.</p>
         <p>For 4), the computer will first randomly choose a sequence within the block. Each of the 12 sequences
             (6 sequences * 2 phases) is equally likely to be chosen. The computer will then draw two random numbers (Y1 and Y2),
             each from 0 to 100. For Guess 1 for the chosen sequence, if Y1 is less than or equal to your reported guess,
-            then you will be paid <strong>$12 if the assigned color is Red.</strong> Otherwise, you will be paid based on a
+            then you will be paid <strong>$12 if the assigned color is Red.</strong> If Y1 is greater than your guess, you will be paid based on a
             lottery in which you can earn $12 with Y1% chance. Payment for Guess 2 is determined identically;
             if Y2 is less than or equal to your reported guess, then you will be paid <strong>$12 if the assigned color is
-                Red.</strong> Otherwise, you will be paid based on a lottery in which you can earn $12 with Y2% chance.</p>
+                Red.</strong> If Y2 is greater than your guess, you will be paid based on a lottery in which you can earn $12 with Y2% chance.</p>
         <p>At the end of the experiment, the computer will randomly draw a block from 1-5 and a quiz from blocks 2 to
-            4. You will be paid for the chosen block and quiz as stated above. In addition to this, you will also
+            5. You will be paid for the chosen block and quiz as stated above. In addition to this, you will also
             be paid a $2 show-up fee.</p>
         <p><strong>Note: The payment scheme is designed in a way to ensure that the best way to maximize your earnings is to
             report your true guess for the probability. For example, for guesses regarding the color red, you maximize your
-            earnings by reporting your true beliefs regarding the probability of Red.</strong></p>
+            earnings by reporting your true beliefs regarding the probability of the color being Red.</strong></p>
         <br>
         <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
         <button class="nexttab btn-primary btn next">Next</button>
