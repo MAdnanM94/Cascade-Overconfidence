@@ -2,13 +2,13 @@
 {% load otree static %}
 
 {% block title %}
-    Subject {{ participant.id_in_session }} - Phase {{ subsession.round_number }}, Decision {{ group.order }}, Guess 1.
+    Subject {{ participant.id_in_session }} - Phase {{ subsession.round_number }}, Sequence {{ group.order }}, Guess 1.
 {% endblock %}
 
 {% block content %}
     <div class="grid-container">
         <div class="information">
-            <p>Your group has been assigned a color (either <span style="color:red;">Red</span> or <span style="color:blue;">Blue</span>).
+            <p>Your group has been assigned a color in this sequence (either <span style="color:red;">Red</span> or <span style="color:blue;">Blue</span>).
                 Each color has an equal chance of being selected. You have two sources of information to help you.</p>
         </div>
 
@@ -70,13 +70,13 @@
         </div>
 
         <div class="decision">
-            <h4>Your Decision</h4>
+            <h4>Your Guess</h4>
             <div id="next">
                 {% formfields %}
                 {% next_button %}
             </div>
             <h4>Payment</h4>
-            <p>If this decision is chosen for payment, the computer will randomly draw a number Y from 0 to 100.
+            <p>If this sequence is chosen for payment, the computer will randomly draw a number Y from 0 to 100.
                 If Y is <i>less than or equal to</i> your guess, you will be paid ${{ Constants.decision_payoff }}
                 if the group's color is <span style="color:red">Red</span>.
                 If Y is <i>greater than</i> your guess, you will be paid ${{ Constants.decision_payoff }} with Y% chance.</p>

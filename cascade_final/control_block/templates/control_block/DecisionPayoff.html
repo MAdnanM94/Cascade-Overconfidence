@@ -12,10 +12,10 @@
             this block is chosen for payment at the end of the experiment.</p>
 
         <h3>The Phase chosen for this block is Phase {{ player.paying_round }}</h3>
-        <h3>The Decision chosen for this phase is {{ player.paying_decision }}</h3>
+        <h3>The Sequence chosen for this phase is {{ player.paying_decision }}</h3>
 
         <h3>First Guess</h3>
-        <p>Your first guess for the probability that the color assigned to your group in this sequence was {{ pre }}%</p>
+        <p>Your first guess for the probability that the color assigned to your group in this sequence is Red was {{ pre }}%</p>
         <p>The random number drawn from 0-100 is {{ player.random_pre }}</p>
         {% if player.random_pre <= pre %}
         <p>You will be paid ${{ Constants.decision_payoff }} if the color assigned to your group is <span style="color:red">Red.</span></p>
@@ -24,7 +24,7 @@
         {% endif %}
 
         <h3>Second Guess</h3>
-        <p>Your second guess for the probability that the color assigned to your group in this sequence was {{ post }}%</p>
+        <p>Your second guess for the probability that the color assigned to your group in this sequence is Red was {{ post }}%</p>
         <p>The random number drawn from 0-100 is {{ player.random_post }}</p>
         {% if player.random_post <= post %}
         <p>You will be paid ${{ Constants.decision_payoff }} if the color assigned to your group is <span style="color:red">Red.</span></p>
@@ -33,7 +33,7 @@
         {% endif %}
 
         <h3>Color</h3>
-        <p>The color assigned to your group was {% if state %}<span style="color:red">Red.</span>{% else %}<span style="color:blue">Blue.</span></p>{% endif %}
+        <p>The color assigned to your group in this sequence was {% if state %}<span style="color:red">Red.</span>{% else %}<span style="color:blue">Blue.</span></p>{% endif %}
 
         <h3>Payoff</h3>
         <p>Your payoff for the first guess is ${{ player.profit_pre }}.</p>
