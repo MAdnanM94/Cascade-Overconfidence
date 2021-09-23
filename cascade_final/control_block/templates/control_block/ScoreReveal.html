@@ -13,17 +13,31 @@ Subject {{ participant.id_in_session }} - Phase 2
             <h3>The composition of your jars is given below!</h3>
         </div>
         <div class="red">
-            <img class = "resize" src="{% static 'red_jar.png' %}"/>
+            <h4 style = "color: red"><strong>Red Jar</strong></h4>
+            {% if player.accuracy == 0.55 %}
+                <img class = "resize" src="{% static 'Red55.PNG' %}"/>
+            {% elif player.accuracy == 0.65 %}
+                <img class = "resize" src="{% static 'Red65.PNG' %}"/>
+            {% else %}
+                <img class = "resize" src="{% static 'Red90.PNG' %}"/>
+            {% endif %}
             <p style = "color: red"><strong>{{ ball_A }} Red Balls</strong></p>
             <p style = "color: blue"><strong>{{ ball_B }} Blue Balls</strong></p>
         </div>
         <div class="blue">
-            <img class = "resize" src="{% static 'blue_jar.png' %}"/>
+            <h4 style = "color: blue"><strong>Blue Jar</strong></p></h4>
+            {% if player.accuracy == 0.55 %}
+                <img class = "resize" src="{% static 'Blue55.PNG' %}"/>
+            {% elif player.accuracy == 0.65 %}
+                <img class = "resize" src="{% static 'Blue65.PNG' %}"/>
+            {% else %}
+                <img class = "resize" src="{% static 'Blue90.PNG' %}"/>
+            {% endif %}
             <p style = "color: blue"><strong>{{ ball_A }} Blue Balls</strong></p>
             <p style = "color: red"><strong>{{ ball_B }} Red Balls</strong></p>
         </div>
         <div class="misc">
-            <p>Please click next to continue.</i></p>
+            <p>Please click next to continue.</p>
             {% next_button %}
         </div>
     </div>

@@ -26,22 +26,38 @@
         </div>
 
         <div class="red">
-            <img class = "resize" src="{% static 'red_jar.png' %}"/>
+            <h4 style = "color: red"><strong>Red Jar</strong></h4>
             {% if subsession.round_number == 1 %}
+            <img class = "resize" src="{% static 'Red.PNG' %}"/>
             <p style = "color: red"><strong>At least 50 Red Balls</strong></p>
             <p style = "color: blue"><strong>At most 50 Blue Balls</strong></p>
             {% else %}
+            {% if player.accuracy == 0.55 %}
+            <img class = "resize" src="{% static 'Red55.PNG' %}"/>
+            {% elif player.accuracy == 0.65 %}
+            <img class = "resize" src="{% static 'Red65.PNG' %}"/>
+            {% else %}
+            <img class = "resize" src="{% static 'Red90.PNG' %}"/>
+            {% endif %}
             <p style = "color: red"><strong>{{ ball_A }} Red Balls</strong></p>
             <p style = "color: blue"><strong>{{ ball_B }} Blue Balls</strong></p>
             {% endif %}
         </div>
 
         <div class="blue">
-            <img class = "resize" src="{% static 'blue_jar.png' %}"/>
+            <h4 style = "color: blue"><strong>Blue Jar</strong></p></h4>
             {% if subsession.round_number == 1 %}
+            <img class = "resize" src="{% static 'Blue.PNG' %}"/>
             <p style = "color: blue"><strong>At least 50 Blue Balls</strong></p>
             <p style = "color: red"><strong>At most 50 Red Balls</strong></p>
             {% else %}
+            {% if player.accuracy == 0.55 %}
+            <img class = "resize" src="{% static 'Blue55.PNG' %}"/>
+            {% elif player.accuracy == 0.65 %}
+            <img class = "resize" src="{% static 'Blue65.PNG' %}"/>
+            {% else %}
+            <img class = "resize" src="{% static 'Blue90.PNG' %}"/>
+            {% endif %}
             <p style = "color: blue"><strong>{{ ball_A }} Blue Balls</strong></p>
             <p style = "color: red"><strong>{{ ball_B }} Red Balls</strong></p>
             {% endif %}
@@ -77,7 +93,7 @@
                 {% next_button %}
             </div>
             <h4>Payment</h4>
-            <p>If this sequqnece is chosen for payment, the computer will randomly draw a number Y from 0 to 100.
+            <p>If this sequence is chosen for payment, the computer will randomly draw a number Y from 0 to 100.
                 If Y is <i>less than or equal to</i> your guess, you will be paid ${{ Constants.decision_payoff }}
                 if the group's color is <span style="color:red">Red</span>.
                 If Y is <i>greater than</i> your guess, you will be paid ${{ Constants.decision_payoff }} with Y% chance.</p>
