@@ -1,0 +1,434 @@
+<!--
+Using the bootstrap tab controls to structure instructions on one page
+Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
+-->
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<!-- Tab navigation -->
+<ul class="nav nav-tabs fixed-top navbar-light bg-light justify-content-center " id="myTab" role="tablist">
+
+    <li class="nav-item" >
+        <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" onclick="topFunction()">Overview
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="sequences-tab" data-toggle="tab" href="#sequences" role="tab" aria-controls="sequences" onclick="topFunction()">Sequences</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="guesses-tab" data-toggle="tab" href="#guesses" role="tab" aria-controls="guesses" onclick="topFunction()">Guesses</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="jars-tab" data-toggle="tab" href="#jars" role="tab" aria-controls="jars" onclick="topFunction()">Jars</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="order-tab" data-toggle="tab" href="#order" role="tab" aria-controls="order" onclick="topFunction()">Order</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="score-tab" data-toggle="tab" href="#score" role="tab" aria-controls="score" onclick="topFunction()">Score Guesses</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" onclick="topFunction()">Summary</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" onclick="topFunction()">Payment</a>
+    </li>
+
+</ul>
+<br>
+
+<!-- Tab content -->
+<div class="tab-content" id="myTabContent">
+    <!-- Overview Tab -->
+    <div class="tab-pane show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+        <p>Welcome and thank you for taking part in this Economics Experiment. This experiment will last for around 2-2.5
+            hours. If you read the instructions carefully, you can earn a considerable amount of money depending on your
+            decisions and chance. Your earnings will be paid out to you via Cash at the end of the experiment.</p>
+
+        <p><i>Before we begin, we ask that you turn off your cell phones for the duration of this experiment. We also ask
+            that you do not communicate with anyone for the duration of this experiment and only use the software provided
+            to you on your devices. Failure to comply with these rules may result in dismissal from this experiment and you
+            will not be paid any earnings you may have otherwise received.</i></p>
+
+        <h2>Overview</h2>
+        <div class="row">
+            <div class="column">
+                <p>This experiment consists of a series of decision rounds spread out over <strong>5 blocks</strong>. At the
+                    beginning of each block, you will be <strong>randomly</strong> assigned to a group with 6 participants
+                    (including you). Neither you, nor your group members will know each other's identities.</p>
+
+                <p>At the beginning of each block, you will be assigned a score, from 0 to 10. How the scores are assigned depends
+                    on the block.</p>
+
+                <p><strong>In Block 1 - </strong>You will be shown a distribution of scores. We will randomly pick a score from
+                    this distribution and assign it to you.</p>
+
+                <p><strong>In Blocks 2-5 - </strong>You will first take part in a general knowledge trivia quiz. Each quiz contains
+                    10 questions. You will have 20 seconds per question. Each question requires one to two words to answer
+                    (except when otherwise stated).<strong> Everyone in your group will take the same quiz per block.</strong></p>
+
+                <p><strong>Each block will have 2 phases. Each phase will have 6 sequences.</strong> The procedures for each phase
+                    are nearly identical, except for the following: In Phase 1, you will not know the score assigned to you.
+                    In Phase 2, you will be notified about your own score at the start of the first sequence.
+                    <strong>However, you will never know the score of any of your group members.</strong></p>
+            </div>
+            <div class="column">
+                <img class = "resize" src="{% static 'Summary.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Sequences Tab -->
+    <div class="tab-pane" id="sequences" role="tabpanel" aria-labelledby="sequences-tab">
+        <h2>Sequences:</h2>
+        <div class="row">
+            <div class="column">
+                <p>In each sequence, your group will be assigned a color: <span style="color:red">Red</span>
+                    or <span style="color:blue">Blue</span>. Each color is equally likely to be assigned to your group
+                    (50-50 chance) and neither you, nor your group members will know the actual color assigned to your group.
+                    Note that the color in each sequence will be chosen <strong>independently</strong> of the colors in other sequences.</p>
+
+                <p>Your action in each sequence is to guess the probability that the color assigned to your group is
+                    <span style="color: red">Red</span>. You will make 2 guesses per sequence by answering:</p>
+
+                <p><strong>What do you think is the probability (0-100) % that the color is Red for this sequence?</strong></p>
+                <p>For each sequence, every group member will make their guesses in a randomly determined sequential order.
+                    The timeline for each set of guesses is as follows:</p>
+
+                <ol>
+                    <li>When it is your turn, you will first see an indication of what the previous movers in your group have
+                        done (if you are the first mover, you will see nothing).</li>
+                    <li>You will then make your first guess (Guess 1) about the probability that the color assigned to the group
+                        is <span style="color: red">Red</span> based on the indication of the previous movers.</li>
+                    <li>You will then see a private signal that provides some hint as to your group's assigned color. You will then
+                        make your second guess (Guess 2) about the probability that the color assigned to the group is
+                        <span style="color: red">Red</span> based on all the information you've been given.</li>
+                </ol>
+            </div>
+            <div class="column">
+                <p><em>The following is a sample illustration of six sequence of Phase 1 in a given block.</em></p>
+                <br>
+                <img class = "resize" src="{% static 'Overview_sequence.png' %}"/>
+            </div>
+        </div>
+        <br>
+
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Guesses Tab -->
+    <div class="tab-pane" id="guesses" role="tabpanel" aria-labelledby="guesses-tab">
+        <h2>Guesses</h2>
+        <h3>Guess 1</h3>
+        <div class="row">
+            <div class="column">
+                <p>Before making the first guess (Guess 1), you will be able to see an indication of what other people in your group
+                    have guessed for this sequence. This indication can be either <span style="color: red">Red</span> or
+                    <span style="color: blue">Blue</span> and will depend on their second guess (Guess 2). You won't be shown their
+                    exact percentage, you will only know if their guesses are above or below 50%. If someone before you guessed
+                    greater than 50%, the indication will be <span style="color:red">Red</span>.
+                    If they guessed less than 50%, the indication will be <span style="color: blue">Blue</span>.
+                    If they guessed 50%, then the computer will randomly choose an indication of either <span style="color:red">Red</span>
+                    or <span style="color: blue">Blue</span>, each equally likely.
+                </p>
+            </div>
+            <div class="column">
+                <p><em>The following is a sample illustration of a history of indications for Guess 1.</em></p>
+                <br>
+                <img class = "resize" src="{% static 'Guess1_example.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <h3>Guess 2</h3>
+        <div class="row">
+            <div class="column">
+                <p>When you make the second guess, you will also receive a private signal. This signal will take the form of a ball
+                    drawn from a jar that is assigned to you based on your group's color. If the group's color is <span style="color: red">Red</span>, your ball
+                    will be drawn from a "<span style="color: red">Red</span> Jar" and if the group's color is <span style="color: blue">Blue</span>, the ball will be drawn from a "<span style="color: blue">Blue</span> Jar."
+                    Each jar will be composed of 100 balls. The Red jar will have <i>at least 50 Red balls and at most 50 blue balls.</i>
+                    The Blue jar will have <i>at least 50 blue balls and at most 50 red balls.</i> Details about the jars are given below.
+                    <strong>Note that your private signals are drawn independently of the signals of other participants</strong>.</p>
+            </div>
+            <div class="column">
+                <p><em>The following is a sample illustration of a history of indications for Guess 2.</em></p>
+                <br>
+                <img class = "resize" src="{% static 'Guess2_example.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Jars Tab -->
+    <div class="tab-pane" id="jars" role="tabpanel" aria-labelledby="jars-tab">
+        <h2>Jars</h2>
+        <div class="row">
+            <div class="column">
+                <p>Your private signal is drawn from your individually assigned jar. The composition of each jar is dependent on the
+                    score (from 0 to 10) that is assigned to you at the beginning of each block. </p>
+                <p>A higher score will lead to a higher number of balls of the wrong color being replaced with balls of the right
+                    color. In other words, higher scores will lead to a higher number of Red balls (and a lower number of Blue balls)
+                    in the Red jar. Likewise, higher scores will lead to a higher number of Blue balls
+                    (and a lower number of Red balls) in the Blue jar.</p>
+                <p>A score of 0-3 gives a composition of 55 Red and 45 Blue balls in the <span style="color:red">Red</span> jar
+                    and 45 Red and 55 Blue balls in the <span style="color: blue">Blue</span> Jar. A score of 4-7 gives a composition
+                    of 65 Red balls and 35 Blue balls in the <span style="color:red">Red</span> jar and 65 Blue balls and 35 Red balls
+                    in the <span style="color: blue">Blue</span> jar. A score higher than 7 results in 90 Red balls and 10 Blue balls
+                    in the <span style="color:red">Red</span> jar and 90 Blue balls and 10 Red balls in the
+                    <span style="color: blue">Blue</span> jar.</p>
+                <p><strong>Note - You will not know the color of the jar the ball is drawn from. Furthermore, you will not know the
+                    composition of the jars of other people, nor the color of their jars. Also, a higher score makes it more likely
+                    for your ball to be the same color as that of the group.</strong></p>
+            </div>
+            <div class="column">
+                <p><em>The following is an illustration of the Jar composition given a score.</em></p>
+                <br>
+                <img class = "resize" src="{% static 'Jars.PNG' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Order Tab -->
+    <div class="tab-pane" id="order" role="tabpanel" aria-labelledby="order-tab">
+        <h2>Order of Sequences</h2>
+        <div class="row">
+            <div class="column">
+                <p>In the beginning, each of you simultaneously act as the first mover and make guesses in different sequences.
+                    After everyone makes their guesses as the first mover, you will then randomly move to another sequence and
+                    follow the first mover of that sequence in making your guesses. When everyone in your group finishes making
+                    their second set of guesses, you move on to another randomly chosen sequence and make your guesses while
+                    following the first and second movers of that sequence. This process repeats until all of you in the group
+                    make your guesses as the 6th mover.</p>
+                <p>We repeat this structure twice per block, once for each phase.</p>
+                <p>A few points to note:</p>
+                <ol>
+                    <li>The color assigned to the group remains the same for each mover in a given sequence. However, the color assigned
+                        in one sequence has no impact on the color assigned in another sequence. Knowing the color in one sequence
+                        does not help you in making your guesses in another sequence</li>
+                    <li>You will never face the same sequence twice i.e. you
+                        will make only one set of guesses in a given sequence</li>
+                    <li>You will never follow the same person twice meaning you will follow a given person at most once in any
+                        given sequence. Also, you will never follow yourself.</li>
+                </ol>
+            </div>
+            <div class="column">
+                <p><em>The following is a sample illustration of the six sequences in a given phase.</em></p>
+                <br>
+                <img class = "resize" src="{% static 'Sequence_order.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Score Guesses Tab -->
+    <div class="tab-pane" id="score" role="tabpanel" aria-labelledby="score-tab">
+        <h2>Score Guesses</h2>
+        <div class="row">
+            <div class="column">
+                <p>In addition to the above, you will make some additional guesses in Blocks 2-5. In Phase 1, after taking the quiz,
+                    for each score S (from 0 to 10), you will guess the probability that the score is S by answering the following question:</p>
+                <p><strong>What do you think is the probability (0-100) % that the score is S?</strong></p>
+                <p>You will make 2 sets of these 11 guesses. One set is for your own score on the quiz. The other set is for the
+                    score of one randomly selected participant in your group who has taken the same quiz. In Phase 2, you will be
+                    shown your own score and will once again make the same guesses for the randomly selected participant. </p>
+                <p>Note that for each set, all probabilities must sum up to 100!</p>
+            </div>
+            <div class="column">
+                <img class = "resize" src="{% static 'Score_guess.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Summary Tab -->
+    <div class="tab-pane" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+        <h2>Summary</h2>
+        <div class="row">
+            <div class="column">
+                <ol>
+                    <li>This experiment has 5 blocks. Each block has 2 phases, and each phase has 6 sequences of guesses.</li>
+                    <li>The timeline for each block is as follows:
+                        <ol style="list-style-type: lower-roman">
+                            <li>First, the computer will randomly assign you into groups of 6.</li>
+                            <li>At the beginning of each block, you will be assigned a score
+                                <ol style="list-style-type: lower-alpha">
+                                    <li>In Block 1, this score will be randomly assigned based on a distribution of scores</li>
+                                    <li>In Blocks 2-5, the score will be assigned based on your performance on a quiz at the start of the block</li>
+                                </ol></li>
+                            <li>Phase 1 starts:
+                                <ol style="list-style-type: lower-alpha">
+                                    <li>For Blocks 2-5, we will first ask you to make guesses about your own score</li>
+                                    <li>For Blocks 2-5, then we ask you to make guesses about the score of one randomly selected participant in your group.</li>
+                                    <li>After that, you will make 6 sets of two guesses, one for each sequence.</li>
+                                </ol></li>
+                            <li>Phase 2 starts
+                                <ol style="list-style-type: lower-alpha">
+                                    <li>Your own score, and thus your jar compositions for the block is revealed</li>
+                                    <li>For Blocks 2-5, you will again make guesses about the score of one randomly selected participant in your group.</li>
+                                    <li>You will again make 6 sets of two guesses, one for each sequence.</li>
+                                </ol></li>
+                            <li>Block ends and you move on to the next block.</li>
+                        </ol></li>
+                </ol>
+            </div>
+            <div class="column">
+                <img class = "resize" src="{% static 'Summary.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Payment Tab -->
+    <div class="tab-pane" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+        <h2>Payment</h2>
+        <p>Your payment will depend on the following:</p>
+        <ol>
+            <li>Your performance on one randomly chosen quiz (from Blocks 2-5) (up to $10)</li>
+            <li>One randomly chosen decision of your score for the quiz selected in 1 (up to $2))</li>
+            <li>One randomly chosen decision of the randomly selected participant's score for the quiz selected in 1) (up to $2)</li>
+            <li>Your two guesses in one randomly chosen sequence in Blocks 1-5. (up to $24)</li>
+        </ol>
+        <p>After each block, you will be shown the <em>possible</em> payment you can receive provided the block or quiz is
+            chosen for payment.</p>
+        <p>For 1) we will pool your quiz score with the scores of 44 people who have previously taken the same quiz.
+            Your earnings for your performance on the quiz will be $10 * r where r is your percentile on the quiz.</p>
+        <p>For 2) and 3), the computer will randomly select one score S (from 0 to 10). It will then draw a random number Y
+            from 0 to 100 (each is equally likely). If Y is less than or equal to your guess for the score's probability,
+            then you will be paid <strong>$2 if the score is S</strong>. If Y is greater than your guess, you will be paid based on a lottery
+            in which you can earn $2 with a chance of Y%.</p>
+        <p>For 4), the computer will first randomly choose a sequence within the block. Each of the 12 sequences
+            (6 sequences * 2 phases) is equally likely to be chosen. The computer will then draw two random numbers (Y1 and Y2),
+            each from 0 to 100. For Guess 1 for the chosen sequence, if Y1 is less than or equal to your reported guess,
+            then you will be paid <strong>$12 if the assigned color is Red.</strong> If Y1 is greater than your guess, you will be paid based on a
+            lottery in which you can earn $12 with Y1% chance. Payment for Guess 2 is determined identically;
+            if Y2 is less than or equal to your reported guess, then you will be paid <strong>$12 if the assigned color is
+                Red.</strong> If Y2 is greater than your guess, you will be paid based on a lottery in which you can earn $12 with Y2% chance.</p>
+        <p>At the end of the experiment, the computer will randomly draw a block from 1-5 and a quiz from blocks 2 to
+            5. You will be paid for the chosen block and quiz as stated above. In addition to this, you will also
+            be paid a $5 show-up fee.</p>
+        <p><strong>Note: The payment scheme is designed in a way to ensure that the best way to maximize your earnings is to
+            report your true guess for the probability. For example, for guesses regarding the color red, you maximize your
+            earnings by reporting your true beliefs regarding the probability of the color being Red.</strong></p>
+        <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        .next {
+            float: right;
+            margin: 40px auto;
+        }
+
+        .back{
+            float: left;
+            margin: 40px auto;
+        }
+
+        .page-header {
+            margin: 0px 0 5px;
+            padding: 0;
+            border-bottom: none;
+            text-align: center;
+        }
+
+        p{
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+
+        .nav {
+            visibility: hidden;
+        }
+
+        .column {
+          float: left;
+          width: 50%;
+          padding: 10px;
+        }
+
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        .resize {
+            max-width:100%;
+            max-height:100%;
+        }
+
+    </style>
+{% endblock %}
+
+{% block scripts %}
+<!-- Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html -->
+    <script>
+    function bootstrapTabControl(){
+        var i, items = $('.nav-link'), pane = $('.tab-pane');
+        // next
+        $('.nexttab').on('click', function(){
+            for(i = 0; i < items.length; i++){
+                if($(items[i]).hasClass('active') == true){
+                    break;
+                }
+            }
+            if(i < items.length - 1){
+            // for tab
+                $(items[i]).removeClass('active');
+                $(items[i+1]).addClass('active');
+                // for pane
+                $(pane[i]).removeClass('show active');
+                $(pane[i+1]).addClass('show active');
+            }
+
+        });
+        // Prev
+        $('.prevtab').on('click', function(){
+            for(i = 0; i < items.length; i++){
+                if($(items[i]).hasClass('active') == true){
+                    break;
+                }
+            }
+            if(i != 0){
+            // for tab
+                $(items[i]).removeClass('active');
+                $(items[i-1]).addClass('active');
+                // for pane
+                $(pane[i]).removeClass('show active');
+                $(pane[i-1]).addClass('show active');
+            }
+        });
+    }
+    bootstrapTabControl();
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+{% endblock %}
