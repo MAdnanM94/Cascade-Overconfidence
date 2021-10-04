@@ -21,11 +21,11 @@ class Q1(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "8" in self.player.Q1.lower() or "eight" in self.player.Q1.lower():
+            if "tokyo" in self.player.Q1.lower():
                 self.player.score += 1
                 self.player.Q1_correct = True
         else:
-            if "europe" in self.player.Q1.lower():
+            if "iraq" in self.player.Q1.lower():
                 self.player.score += 1
                 self.player.Q1_correct = True
 
@@ -41,11 +41,11 @@ class Q2(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "2" in self.player.Q2.lower() or "two" in self.player.Q2.lower():
+            if "8" in self.player.Q2.lower() or "eight" in self.player.Q2.lower():
                 self.player.score += 1
                 self.player.Q2_correct = True
         else:
-            if "plants" in self.player.Q2.lower() or "vegetation" in self.player.Q2.lower():
+            if "europe" in self.player.Q2.lower():
                 self.player.score += 1
                 self.player.Q2_correct = True
 
@@ -61,11 +61,11 @@ class Q3(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "star wars" in self.player.Q3.lower():
+            if "heart" in self.player.Q3.lower():
                 self.player.score += 1
                 self.player.Q3_correct = True
         else:
-            if "iraq" in self.player.Q3.lower():
+            if "indonesia" in self.player.Q3.lower():
                 self.player.score += 1
                 self.player.Q3_correct = True
 
@@ -81,11 +81,11 @@ class Q4(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "tokyo" in self.player.Q4.lower():
+            if ("september" in self.player.Q4.lower() or "9" in self.player.Q4.lower()) and "11" in self.player.Q4.lower():
                 self.player.score += 1
                 self.player.Q4_correct = True
         else:
-            if "indonesia" in self.player.Q4.lower():
+            if "ankara" in self.player.Q4.lower():
                 self.player.score += 1
                 self.player.Q4_correct = True
 
@@ -101,11 +101,11 @@ class Q5(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "volcano" in self.player.Q5.lower() or "eruption" in self.player.Q5.lower() or "volcanic" in self.player.Q5.lower():
+            if "2000" in self.player.Q5.lower() or "two thousand" in self.player.Q5.lower():
                 self.player.score += 1
                 self.player.Q5_correct = True
         else:
-            if "6" in self.player.Q5.lower() or "six" in self.player.Q5.lower():
+            if "sun" in self.player.Q5.lower():
                 self.player.score += 1
                 self.player.Q5_correct = True
 
@@ -121,11 +121,11 @@ class Q6(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "great barrier" in self.player.Q6.lower():
+            if "two" in self.player.Q6.lower() or "2" in self.player.Q6.lower():
                 self.player.score += 1
                 self.player.Q6_correct = True
         else:
-            if "pol" in self.player.Q6.lower() and "pot" in self.player.Q6.lower():
+            if "hyoid" in self.player.Q6.lower():
                 self.player.score += 1
                 self.player.Q6_correct = True
 
@@ -141,11 +141,11 @@ class Q7(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "woodstock" in self.player.Q7.lower():
+            if "volcano" in self.player.Q7.lower() or "eruption" in self.player.Q7.lower() or "volcanic" in self.player.Q7.lower():
                 self.player.score += 1
                 self.player.Q7_correct = True
         else:
-            if "hannibal" in self.player.Q7.lower():
+            if "pol" in self.player.Q7.lower() and "pot" in self.player.Q7.lower():
                 self.player.score += 1
                 self.player.Q7_correct = True
 
@@ -161,11 +161,11 @@ class Q8(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "renaissance" in self.player.Q8.lower():
+            if "star wars" in self.player.Q8.lower():
                 self.player.score += 1
                 self.player.Q8_correct = True
         else:
-            if "hyoid" in self.player.Q8.lower():
+            if "black" in self.player.Q8.lower() and "tuesday" in self.player.Q8.lower():
                 self.player.score += 1
                 self.player.Q8_correct = True
 
@@ -181,11 +181,11 @@ class Q9(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "inflammation" in self.player.Q9.lower() or "swelling" in self.player.Q9.lower():
+            if "titanic" in self.player.Q9.lower():
                 self.player.score += 1
                 self.player.Q9_correct = True
         else:
-            if "botswana" in self.player.Q9.lower():
+            if "waterloo" in self.player.Q9.lower():
                 self.player.score += 1
                 self.player.Q9_correct = True
 
@@ -201,11 +201,11 @@ class Q10(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 2:
-            if "boris" in self.player.Q10.lower() and "becker" in self.player.Q10.lower():
+            if "jordan" in self.player.Q10.lower():
                 self.player.score += 1
                 self.player.Q10_correct = True
         else:
-            if "jack" in self.player.Q10.lower() and "nicholson" in self.player.Q10.lower():
+            if "marvin gaye" in self.player.Q10.lower() and ("senior" in self.player.Q10.lower() or "sr" in self.player.Q10.lower()):
                 self.player.score += 1
                 self.player.Q10_correct = True
 
