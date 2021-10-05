@@ -13,9 +13,15 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
 <!-- Tab navigation -->
 <ul class="nav nav-tabs fixed-top navbar-light bg-light justify-content-center " id="myTab" role="tablist">
 
+    <li class="nav-item">
+        <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" onclick="topFunction()">Summary</a>
+    </li>
     <li class="nav-item" >
-        <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" onclick="topFunction()">Overview
+        <a class="nav-link" id="block-tab" data-toggle="tab" href="#block" role="tab" aria-controls="block" onclick="topFunction()">Blocks
         </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="phases-tab" data-toggle="tab" href="#phases" role="tab" aria-controls="phases" onclick="topFunction()">Phases</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="sequences-tab" data-toggle="tab" href="#sequences" role="tab" aria-controls="sequences" onclick="topFunction()">Sequences</a>
@@ -30,12 +36,6 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
         <a class="nav-link" id="order-tab" data-toggle="tab" href="#order" role="tab" aria-controls="order" onclick="topFunction()">Order</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="score-tab" data-toggle="tab" href="#score" role="tab" aria-controls="score" onclick="topFunction()">Score Guesses</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" onclick="topFunction()">Summary</a>
-    </li>
-    <li class="nav-item">
         <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" onclick="topFunction()">Payment</a>
     </li>
 
@@ -44,8 +44,9 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
 
 <!-- Tab content -->
 <div class="tab-content" id="myTabContent">
-    <!-- Overview Tab -->
-    <div class="tab-pane show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+
+    <!-- Summary Tab -->
+    <div class="tab-pane show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
         <p>Welcome and thank you for taking part in this Economics Experiment. This experiment will last for around 2-2.5
             hours. If you read the instructions carefully, you can earn a considerable amount of money depending on your
             decisions and chance. Your earnings will be paid out to you via Cash at the end of the experiment.</p>
@@ -54,8 +55,47 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
             that you do not communicate with anyone for the duration of this experiment and only use the software provided
             to you on your devices. Failure to comply with these rules may result in dismissal from this experiment and you
             will not be paid any earnings you may have otherwise received.</i></p>
+        <h2>Summary</h2>
+        <div class="row">
+            <div class="column">
+                <ol>
+                    <li>This experiment has 5 blocks. Each block has 2 phases, and each phase has 6 sequences of guesses.</li>
+                    <li>The timeline for each block is as follows:
+                        <ol style="list-style-type: lower-roman">
+                            <li>First, the computer will randomly assign you into groups of 6.</li>
+                            <li>At the beginning of each block, you will be assigned a score
+                                <ol style="list-style-type: lower-alpha">
+                                    <li>In Block 1, this score will be randomly assigned based on a distribution of scores</li>
+                                    <li>In Blocks 2-5, the score will be assigned based on your performance on a quiz at the start of the block</li>
+                                </ol></li>
+                            <li>Phase 1 starts:
+                                <ol style="list-style-type: lower-alpha">
+                                    <li>For Blocks 2-5, we will first ask you to make guesses about your own score</li>
+                                    <li>For Blocks 2-5, then we ask you to make guesses about the score of one randomly selected participant in your group.</li>
+                                    <li>After that, you will make 6 sets of two guesses, one for each sequence.</li>
+                                </ol></li>
+                            <li>Phase 2 starts
+                                <ol style="list-style-type: lower-alpha">
+                                    <li>Your own score, and thus your jar compositions for the block is revealed</li>
+                                    <li>For Blocks 2-5, you will again make guesses about the score of one randomly selected participant in your group.</li>
+                                    <li>You will again make 6 sets of two guesses, one for each sequence.</li>
+                                </ol></li>
+                            <li>Block ends and you move on to the next block.</li>
+                        </ol></li>
+                </ol>
+            </div>
+            <div class="column">
+                <img class = "resize" src="{% static 'Summary.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
 
-        <h2>Overview</h2>
+    <!-- Block Tab -->
+    <div class="tab-pane" id="block" role="tabpanel" aria-labelledby="block-tab">
+
+        <h2>Blocks</h2>
         <div class="row">
             <div class="column">
                 <p>This experiment consists of a series of decision rounds spread out over <strong>5 blocks</strong>. At the
@@ -82,6 +122,29 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
             </div>
         </div>
         <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
+        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
+    </div>
+
+    <!-- Phases Tab -->
+    <div class="tab-pane" id="phases" role="tabpanel" aria-labelledby="phases-tab">
+        <h2>Phases</h2>
+        <div class="row">
+            <div class="column">
+                <p>In addition to the above, you will make some additional guesses in Blocks 2-5. In Phase 1, after taking the quiz,
+                    for each score S (from 0 to 10), you will guess the probability that the score is S by answering the following question:</p>
+                <p><strong>What do you think is the probability (0-100) % that the score is S?</strong></p>
+                <p>You will make 2 sets of these 11 guesses. One set is for your own score on the quiz. The other set is for the
+                    score of one randomly selected participant in your group who has taken the same quiz. In Phase 2, you will be
+                    shown your own score and will once again make the same guesses for the randomly selected participant. </p>
+                <p>Note that for each set, all probabilities must sum up to 100!</p>
+            </div>
+            <div class="column">
+                <img class = "resize" src="{% static 'Score_guess.png' %}"/>
+            </div>
+        </div>
+        <br>
+        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
         <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
     </div>
 
@@ -227,68 +290,6 @@ Source: https://www.jqueryscript.net/other/bootstrap-tabs-carousel.html
                 <p><em>The following is a sample illustration of the six sequences in a given phase.</em></p>
                 <br>
                 <img class = "resize" src="{% static 'Sequence_order.png' %}"/>
-            </div>
-        </div>
-        <br>
-        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
-        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
-    </div>
-
-    <!-- Score Guesses Tab -->
-    <div class="tab-pane" id="score" role="tabpanel" aria-labelledby="score-tab">
-        <h2>Score Guesses</h2>
-        <div class="row">
-            <div class="column">
-                <p>In addition to the above, you will make some additional guesses in Blocks 2-5. In Phase 1, after taking the quiz,
-                    for each score S (from 0 to 10), you will guess the probability that the score is S by answering the following question:</p>
-                <p><strong>What do you think is the probability (0-100) % that the score is S?</strong></p>
-                <p>You will make 2 sets of these 11 guesses. One set is for your own score on the quiz. The other set is for the
-                    score of one randomly selected participant in your group who has taken the same quiz. In Phase 2, you will be
-                    shown your own score and will once again make the same guesses for the randomly selected participant. </p>
-                <p>Note that for each set, all probabilities must sum up to 100!</p>
-            </div>
-            <div class="column">
-                <img class = "resize" src="{% static 'Score_guess.png' %}"/>
-            </div>
-        </div>
-        <br>
-        <button onclick="topFunction()" type="button" class="prevtab btn-primary btn back">Back</button>
-        <button onclick="topFunction()" type="button" class="nexttab btn-primary btn next">Next</button>
-    </div>
-
-    <!-- Summary Tab -->
-    <div class="tab-pane" id="summary" role="tabpanel" aria-labelledby="summary-tab">
-        <h2>Summary</h2>
-        <div class="row">
-            <div class="column">
-                <ol>
-                    <li>This experiment has 5 blocks. Each block has 2 phases, and each phase has 6 sequences of guesses.</li>
-                    <li>The timeline for each block is as follows:
-                        <ol style="list-style-type: lower-roman">
-                            <li>First, the computer will randomly assign you into groups of 6.</li>
-                            <li>At the beginning of each block, you will be assigned a score
-                                <ol style="list-style-type: lower-alpha">
-                                    <li>In Block 1, this score will be randomly assigned based on a distribution of scores</li>
-                                    <li>In Blocks 2-5, the score will be assigned based on your performance on a quiz at the start of the block</li>
-                                </ol></li>
-                            <li>Phase 1 starts:
-                                <ol style="list-style-type: lower-alpha">
-                                    <li>For Blocks 2-5, we will first ask you to make guesses about your own score</li>
-                                    <li>For Blocks 2-5, then we ask you to make guesses about the score of one randomly selected participant in your group.</li>
-                                    <li>After that, you will make 6 sets of two guesses, one for each sequence.</li>
-                                </ol></li>
-                            <li>Phase 2 starts
-                                <ol style="list-style-type: lower-alpha">
-                                    <li>Your own score, and thus your jar compositions for the block is revealed</li>
-                                    <li>For Blocks 2-5, you will again make guesses about the score of one randomly selected participant in your group.</li>
-                                    <li>You will again make 6 sets of two guesses, one for each sequence.</li>
-                                </ol></li>
-                            <li>Block ends and you move on to the next block.</li>
-                        </ol></li>
-                </ol>
-            </div>
-            <div class="column">
-                <img class = "resize" src="{% static 'Summary.png' %}"/>
             </div>
         </div>
         <br>
