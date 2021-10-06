@@ -165,7 +165,7 @@ class Q8(Page):
                 self.player.score += 1
                 self.player.Q8_correct = True
         else:
-            if "black" in self.player.Q8.lower() and "tuesday" in self.player.Q8.lower():
+            if "boris" in self.player.Q8.lower() and "becker" in self.player.Q8.lower():
                 self.player.score += 1
                 self.player.Q8_correct = True
 

@@ -205,7 +205,7 @@ class Q10(Page):
                 self.player.score += 1
                 self.player.Q10_correct = True
         else:
-            if "eagles" in self.player.Q10.lower():
+            if "louis" in self.player.Q10.lower() and "cartier" in self.player.Q10.lower():
                 self.player.score += 1
                 self.player.Q10_correct = True
 
