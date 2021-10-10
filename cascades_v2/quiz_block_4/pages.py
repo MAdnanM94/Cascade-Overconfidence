@@ -81,7 +81,7 @@ class Q4(Page):
 
     def before_next_page(self):
         if self.subsession.q_sequence == 1:
-            if ("september" in self.player.Q4.lower() or "9" in self.player.Q4.lower()) and "11" in self.player.Q4.lower():
+            if ("september" in self.player.Q4.lower() or "9" in self.player.Q4.lower()) and ("11" in self.player.Q4.lower() or "eleven" in self.player.Q4.lower()):
                 self.player.score += 1
                 self.player.Q4_correct = True
         else:
