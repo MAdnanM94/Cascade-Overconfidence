@@ -31,6 +31,36 @@ SESSION_CONFIGS = [
                       'payment_info'],
         use_browser_bots=False
     ),
+    dict(
+        name='cascade_3',
+        display_name='Cascade Sequence 3',
+        num_demo_participants=6,
+        q_sequence=1,
+        app_sequence=['instructions',
+                      'quiz_block_1',
+                      'quiz_block_2',
+                      'quiz_block_3',
+                      'quiz_block_4',
+                      'control_block',
+                      'final_payment',
+                      'payment_info'],
+        use_browser_bots=False
+    ),
+    dict(
+        name='cascade_4',
+        display_name='Cascade Sequence 4',
+        num_demo_participants=6,
+        q_sequence=2,
+        app_sequence=['instructions',
+                      'quiz_block_1',
+                      'quiz_block_2',
+                      'quiz_block_3',
+                      'quiz_block_4',
+                      'control_block',
+                      'final_payment',
+                      'payment_info'],
+        use_browser_bots=False
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
