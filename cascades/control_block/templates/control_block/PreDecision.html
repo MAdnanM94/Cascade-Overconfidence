@@ -1,0 +1,213 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject {{ participant.id_in_session }} - Phase {{ subsession.round_number }}, Sequence {{ group.order }}, Guess 1.
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="information">
+            <p>Your group has been assigned a color in this sequence (either <span style="color:red;">Red</span> or <span style="color:blue;">Blue</span>).
+                Each color has an equal chance of being selected. You have two sources of information to help you.</p>
+        </div>
+
+        <div class="information1">
+            <h4>Information 1</h4>
+            <p>You can see your predecessor's guesses. These guesses are either <span style="color:red;">Red</span> or <span style="color:blue;">Blue</span></p>
+        </div>
+
+        <div class="information2">
+            <h4>Information 2</h4>
+            <p>You will be shown the color of a ball, drawn from a jar. If the group's color is <span style="color:red;">Red</span>,
+                you will be assigned the <span style="color:red;">Red</span> jar.  Likewise, if the group's color is
+                <span style="color:blue;">Blue</span>, you will be assigned a <span style="color:blue;">Blue</span> jar. Each jar
+                contains 100 balls.</p>
+        </div>
+
+        <div class="red">
+            <h4 style = "color: red"><strong>Red Jar</strong></h4>
+            {% if subsession.round_number > 2 %}
+            <img class = "resize" src="{% static 'Red.PNG' %}"/>
+            <p style = "color: red"><strong>At least 50 Red Balls</strong></p>
+            <p style = "color: blue"><strong>At most 50 Blue Balls</strong></p>
+            {% else %}
+                {% if player.accuracy == 0.55 %}
+                    <img class = "resize" src="{% static 'Red55.PNG' %}"/>
+                {% elif player.accuracy == 0.65 %}
+                    <img class = "resize" src="{% static 'Red65.PNG' %}"/>
+                {% else %}
+                    <img class = "resize" src="{% static 'Red90.PNG' %}"/>
+                {% endif %}
+            <p style = "color: red"><strong>{{ ball_A }} Red Balls</strong></p>
+            <p style = "color: blue"><strong>{{ ball_B }} Blue Balls</strong></p>
+            {% endif %}
+        </div>
+
+        <div class="blue">
+            <h4 style = "color: blue"><strong>Blue Jar</strong></p></h4>
+            {% if subsession.round_number > 2 %}
+            <img class = "resize" src="{% static 'Blue.PNG' %}"/>
+            <p style = "color: blue"><strong>At least 50 Blue Balls</strong></p>
+            <p style = "color: red"><strong>At most 50 Red Balls</strong></p>
+            {% else %}
+                {% if player.accuracy == 0.55 %}
+                    <img class = "resize" src="{% static 'Blue55.PNG' %}"/>
+                {% elif player.accuracy == 0.65 %}
+                    <img class = "resize" src="{% static 'Blue65.PNG' %}"/>
+                {% else %}
+                    <img class = "resize" src="{% static 'Blue90.PNG' %}"/>
+                {% endif %}
+            <p style = "color: blue"><strong>{{ ball_A }} Blue Balls</strong></p>
+            <p style = "color: red"><strong>{{ ball_B }} Red Balls</strong></p>
+            {% endif %}
+        </div>
+        <div class="history">
+            <div id = "first_decision_notice">
+                Currently you are the first mover. There is no previous guess for you to observe.
+            </div>
+            <table id = "history_table">
+                <tr id = "dm0" class = "row"><th class = "mover"></th><th class = "cell"><p>Guess</p></th></tr>
+                <tr id = "dm1" class = "row"><td class = "mover">1st Mover</td><td id = "A1" class = "cell"><p>{% if Red_his1 %} <span style="color:red">Red</span> {% else %} <span style="color:blue">Blue</span> {% endif %} </p></td></tr>
+                <tr id = "dm2" class = "row"><td class = "mover">2nd Mover</td><td id = "A2" class = "cell"><p>{% if Red_his2 %} <span style="color:red">Red</span> {% else %} <span style="color:blue">Blue</span> {% endif %} </p></td></tr>
+                <tr id = "dm3" class = "row"><td class = "mover">3rd Mover</td><td id = "A3" class = "cell"><p>{% if Red_his3 %} <span style="color:red">Red</span> {% else %} <span style="color:blue">Blue</span> {% endif %} </p></td></tr>
+                <tr id = "dm4" class = "row"><td class = "mover">4th Mover</td><td id = "A4" class = "cell"><p>{% if Red_his4 %} <span style="color:red">Red</span> {% else %} <span style="color:blue">Blue</span> {% endif %} </p></td></tr>
+                <tr id = "dm5" class = "row"><td class = "mover">5th Mover</td><td id = "A5" class = "cell"><p>{% if Red_his5 %} <span style="color:red">Red</span> {% else %} <span style="color:blue">Blue</span> {% endif %} </p></td></tr>
+                <tr id = "dm6" class = "row"><td class = "mover">6th Mover</td><td id = "A6" class = "cell"><p>{% if Red_his6 %} <span style="color:red">Red</span> {% else %} <span style="color:blue">Blue</span> {% endif %} </p></td></tr>
+            </table>
+            <div id = "button1_div" class = "button_div">
+                <button onclick="history_display()" class="otree-btn-next btn btn-primary" type = "button">Show Next Mover</button>
+            </div>
+        </div>
+
+        <div class="ball">
+            <h4>Your drawn ball</h4>
+            <p>You will be shown the color of the ball for Guess 2.</p>
+        </div>
+
+        <div class="decision">
+            <h4>Your Guess</h4>
+            <div id="next">
+                {% formfields %}
+                {% next_button %}
+            </div>
+            <h4>Payment</h4>
+            <p>If this sequence is chosen for payment, the computer will first randomly choose one of your two guesses. Then,
+                the computer will draw a number Y from 0 to 100.
+                If Y is <i>less than or equal to</i> your guess, you will be paid ${{ Constants.decision_payoff }}
+                if the group's color is <span style="color:red">Red</span>.
+                If Y is <i>greater than</i> your guess, you will be paid ${{ Constants.decision_payoff }} with Y% chance.</p>
+            <p><i>It is in your best interest to report your true guess about probability that the color is
+                <span style="color:red">Red</span> as that way you maximize your earnings.</i></p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style type = "text/css">
+
+        .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 0.5fr 0.5fr;
+          grid-template-rows: 0.1fr 0.25fr 1fr 0.25fr 0.5fr;
+          gap: 5px 5px;
+          grid-template-areas:
+            "information information ."
+            "information1 information2 information2"
+            "history red blue"
+            "history ball ball"
+            "decision decision decision";
+        }
+        .information { grid-area: information; }
+        .information1 { grid-area: information1; }
+        .information2 { grid-area: information2; }
+        .red { grid-area: red; }
+        .blue { grid-area: blue; }
+        .history { grid-area: history; }
+        .ball { grid-area: ball; }
+        .decision { grid-area: decision; }
+
+        .row{ display: none; }
+
+        .mover{ width:250px; }
+
+        .cell{
+            width:150px;
+        }
+
+        .resize {
+            max-width:100%;
+            max-height:100%;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var order = {{ group.order | json }};
+        var k = 2;
+        var table = document.getElementById("history_table");
+        var button1 = document.getElementById("button1_div");
+        var button2 = document.getElementById("button2_div");
+        var notice = document.getElementById("first_decision_notice");
+
+        if(order === 1){
+            table.style.display = "none";
+            button1.style.display = "none";
+            button2.style.display = "block";
+            notice.style.display = "block";
+        }
+
+        if(order >= 2){
+            var r0 = document.getElementById("dm0");
+            var r1 = document.getElementById("dm1");
+            r0.style.display = "table-row";
+            r1.style.display = "table-row";
+            notice.style.display = "none";
+        }
+
+        if(order === 2){
+            button1.style.display = "none";
+            button2.style.display = "block";
+        }
+
+        if(k <= order){
+            document.getElementById("next").style.visibility="hidden";
+                }
+
+        function history_display() {
+            if (k === 2) {
+                var r2 = document.getElementById("dm2");
+                r2.style.display = "table-row";
+            }
+            if (k === 3) {
+                var r3 = document.getElementById("dm3");
+                r3.style.display = "table-row";
+            }
+            if (k === 4) {
+                var r4 = document.getElementById("dm4");
+                r4.style.display = "table-row";
+            }
+            if (k === 5) {
+                var r5 = document.getElementById("dm5");
+                r5.style.display = "table-row";
+            }
+            if (k === 6) {
+                var r6 = document.getElementById("dm6");
+                r6.style.display = "table-row";
+            }
+
+
+            k = k + 1;
+            if (k === order) {
+                button1.style.display = "none";
+                document.getElementById("next").style.visibility="visible";
+            }
+            var scroll = document.getElementById("scroll");
+            scroll.scrollTop = scroll.scrollHeight;
+        }
+    </script>
+{% endblock %}
+

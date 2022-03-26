@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Questionnaire - Subject {{ participant.id_in_session }}
+{% endblock %}
+
+{% block content %}
+    <p>Thank you for participating in this experiment! To facilitate our understanding of economic behavior,
+    we would like for you to answer the following questions.</p>
+    <p><strong>Note that this information might be shared with other researchers for future research, however,
+    nobody will be able to link this information to you specifically - this information will remain anonymous.</strong></p>
+
+    {% formfields %}
+
+    <p>Please click next to enter your payment information.</p>
+    {% next_button %}
+{% endblock %}
+
+

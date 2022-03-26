@@ -1,0 +1,75 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Subject {{ participant.id_in_session }} - Phase 2
+{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="info">
+            <h3>We will now start Phase 2 of this block.</h3>
+            <h3>Your score is {{ player.score }}</h3>
+            <h3>The composition of your jars is given below!</h3>
+        </div>
+        <div class="red">
+            <h4 style = "color: red"><strong>Red Jar</strong></h4>
+            {% if player.accuracy == 0.55 %}
+                <img class = "resize" src="{% static 'Red55.PNG' %}"/>
+            {% elif player.accuracy == 0.65 %}
+                <img class = "resize" src="{% static 'Red65.PNG' %}"/>
+            {% else %}
+                <img class = "resize" src="{% static 'Red90.PNG' %}"/>
+            {% endif %}
+            <p style = "color: red"><strong>{{ ball_A }} Red Balls</strong></p>
+            <p style = "color: blue"><strong>{{ ball_B }} Blue Balls</strong></p>
+        </div>
+        <div class="blue">
+            <h4 style = "color: blue"><strong>Blue Jar</strong></p></h4>
+            {% if player.accuracy == 0.55 %}
+                <img class = "resize" src="{% static 'Blue55.PNG' %}"/>
+            {% elif player.accuracy == 0.65 %}
+                <img class = "resize" src="{% static 'Blue65.PNG' %}"/>
+            {% else %}
+                <img class = "resize" src="{% static 'Blue90.PNG' %}"/>
+            {% endif %}
+            <p style = "color: blue"><strong>{{ ball_A }} Blue Balls</strong></p>
+            <p style = "color: red"><strong>{{ ball_B }} Red Balls</strong></p>
+        </div>
+        <div class="misc">
+            <p>Please click next to continue.</p>
+            {% next_button %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block styles %}
+    <style type = "text/css">
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 0.5fr 1fr 0.5fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "info info info info"
+        "red red blue blue"
+        "misc misc misc misc";
+    }
+
+    .info { grid-area: info; }
+
+    .red { grid-area: red; }
+
+    .blue { grid-area: blue; }
+
+    .misc { grid-area: misc; }
+
+    .resize {
+            max-width:100%;
+            max-height:100%;
+        }
+    </style>
+
+{% endblock %}

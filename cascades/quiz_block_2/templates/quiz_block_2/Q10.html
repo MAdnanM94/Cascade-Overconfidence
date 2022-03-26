@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject {{ participant.id_in_session }} - General Knowledge Trivia Quiz
+{% endblock %}
+
+{% block content %}
+    <h2>Question 10</h2>
+
+    <div class = "question">
+        {% if subsession.q_sequence == 2 %}
+            {% formfield player.Q10 label="John Lennon, Paul McCartney, George Harrison and Ringo Starr were the four members of what famous classic rock band?" %}
+        {% else %}
+            {% formfield player.Q10 label="Who is credited with inventing the wristwatch in 1904?" %}
+        {% endif %}
+    </div>
+
+    Click next to submit and move to the next part
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <style type = "text/css">
+
+        .question{
+            -webkit-touch-callout: none;
+              -webkit-user-select: none;
+               -khtml-user-select: none;
+                 -moz-user-select: none;
+                  -ms-user-select: none;
+                      user-select: none;
+        }
+
+
+    </style>
+{% endblock %}

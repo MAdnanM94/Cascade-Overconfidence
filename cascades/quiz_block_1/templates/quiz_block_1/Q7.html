@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject {{ participant.id_in_session }} - General Knowledge Trivia Quiz
+{% endblock %}
+
+{% block content %}
+    <h2>Question 7</h2>
+
+    <div class = "question">
+        {% if subsession.q_sequence == 1 %}
+            {% formfield player.Q7 label="On what country did the United States drop atomic bombs on during World War 2?" %}
+        {% else %}
+            {% formfield player.Q7 label="Who wrote and directed Kill Bill Volumes 1 and 2?" %}
+        {% endif %}
+    </div>
+
+    Click next to submit and move to the next question.
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <style type = "text/css">
+
+        .question{
+            -webkit-touch-callout: none;
+              -webkit-user-select: none;
+               -khtml-user-select: none;
+                 -moz-user-select: none;
+                  -ms-user-select: none;
+                      user-select: none;
+        }
+
+
+    </style>
+{% endblock %}
