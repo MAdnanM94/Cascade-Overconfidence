@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject {{ participant.id_in_session }} - General Knowledge Trivia Quiz
+{% endblock %}
+
+{% block content %}
+    <h2>Question 1</h2>
+
+    <div class = "question">
+        {% if subsession.q_sequence == 2 %}
+            {% formfield player.Q1 label="What is the capital of and largest city in Japan?" %}
+        {% else %}
+            {% formfield player.Q1 label="Baghdad is the capital of what middle-eastern country?" %}
+        {% endif %}
+    </div>
+
+    Click next to submit and move to the next question.
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <style type = "text/css">
+
+        .question{
+            -webkit-touch-callout: none;
+              -webkit-user-select: none;
+               -khtml-user-select: none;
+                 -moz-user-select: none;
+                  -ms-user-select: none;
+                      user-select: none;
+        }
+
+
+    </style>
+{% endblock %}

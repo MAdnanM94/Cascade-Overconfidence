@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Subject ID {{ participant.id_in_session }} - Block End.
+{% endblock %}
+
+{% block content %}
+    <h3>
+        Block D has ended.
+    </h3>
+    <h3>
+        Please click next to continue.
+    </h3>
+    {% next_button %}
+{% endblock %}

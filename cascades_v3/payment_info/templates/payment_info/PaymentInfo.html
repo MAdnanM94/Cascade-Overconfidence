@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Payment Information - Subject {{ participant.id_in_session }}
+{% endblock %}
+
+{% block content %}
+    <p>Thank you for taking part in this experiment! Please note the following information for your records.</p>
+    <ul>
+        <li>Your Subject ID is {{ participant.id_in_session}}</li>
+        <li>Your total earnings for this experiment are {{ participant.payoff_plus_participation_fee }}</li>
+    </ul>
+    <p>Please answer the following questions below to receive your payment.</p>
+    {% formfields %}
+    {% next_button %}
+
+{% endblock %}
