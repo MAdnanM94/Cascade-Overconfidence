@@ -13,7 +13,8 @@ from otree.api import (
 author = 'Mir Adnan Mahmood'
 
 doc = """
-This app contains instructions for the Overconfidence and Cascades experiment.
+This app contains instructions for the Overconfidence and Cascades experiment. This is version 2 with subjects being 
+paid only for one randomly selected guess in the entire experiment.
 """
 
 
